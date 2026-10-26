@@ -79,7 +79,9 @@
     --side: 20px; --sec: 56px;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-padding-top: 112px; }
+  /* ponytail: jump links clear the pinned banner + header by fixed amounts (91px desktop, up to 155px on a 320px phone as the banner wraps); re-measure if the banner text changes */
+  @media (max-width: 760px) { html { scroll-padding-top: 176px; } }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body { margin: 0; background: var(--white); color: var(--near); font-family: var(--f); font-size: 13px; line-height: 1.5; font-weight: 470; }
   img { display: block; max-width: 100%; height: auto; }
@@ -93,7 +95,7 @@
   .arrow::after { content: " →"; }
   .link:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--green); }
   ::selection { background: color-mix(in srgb, var(--green) 20%, transparent); }
-  section { padding-block: var(--sec); scroll-margin-top: 90px; }
+  section { padding-block: var(--sec); }
   /* every section opens the same way: hairline, label row, then one 40px step to the content */
   .row { display: grid; grid-template-columns: 1fr 2fr; gap: var(--s5); border-top: 1px solid var(--rule); padding-top: var(--s4); margin-bottom: var(--s8); }
   @media (max-width: 760px) { .row { grid-template-columns: 1fr; gap: var(--s2); } }
@@ -246,7 +248,7 @@
         <figcaption><a class="up link arrow" href="#toolkit">AI Fundamentals</a><span class="muted up">01</span></figcaption>
       </figure>
       <figure>
-        <img src="images/workshop-room.jpg" alt="A team working on laptops around a long table in a bright room, sticky notes on a whiteboard behind them" width="770" height="572">
+        <img src="images/ai-lab.jpg" alt="Four people working on laptops around a round tiled table, seen from above" width="1600" height="1067">
         <figcaption><a class="up link arrow" href="#generative">The AI Lab</a><span class="muted up">02</span></figcaption>
       </figure>
       <figure>
@@ -302,7 +304,7 @@
 
       <article class="ws" id="generative">
         <figure>
-          <img src="images/workshop-room.jpg" alt="A team working on laptops around a long table in a bright room, sticky notes on a whiteboard behind them" width="770" height="572">
+          <img src="images/ai-lab.jpg" alt="Four people working on laptops around a round tiled table, seen from above" width="1600" height="1067">
           <figcaption class="up muted">Workshop 02</figcaption>
         </figure>
         <div>
