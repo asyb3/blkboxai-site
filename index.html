@@ -79,9 +79,9 @@
     --side: 20px; --sec: 56px;
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 112px; }
-  /* ponytail: jump links clear the pinned banner + header by fixed amounts (91px desktop, up to 155px on a 320px phone as the banner wraps); re-measure if the banner text changes */
-  @media (max-width: 760px) { html { scroll-padding-top: 176px; } }
+  /* jump links land clear of the pinned header (57px, two rows = 85px on phones) */
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  @media (max-width: 760px) { html { scroll-padding-top: 104px; } }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body { margin: 0; background: var(--white); color: var(--near); font-family: var(--f); font-size: 13px; line-height: 1.5; font-weight: 470; }
   img { display: block; max-width: 100%; height: auto; }
@@ -220,8 +220,9 @@
 </head>
 <body class="">
 
+<div class="strip up">In-person AI tool workshops for companies · Get in touch to book a workshop for your team</div>
+
 <header>
-  <div class="strip up">In-person AI tool workshops for companies · Get in touch to book a workshop for your team</div>
   <div class="wrap head">
     <nav class="left up" aria-label="primary">
       <a href="#workshops">Workshops</a>
@@ -249,11 +250,11 @@
       </figure>
       <figure>
         <img src="images/ai-lab.jpg" alt="Four people working on laptops around a round tiled table, seen from above" width="1600" height="1067">
-        <figcaption><a class="up link arrow" href="#generative">The AI Lab</a><span class="muted up">02</span></figcaption>
+        <figcaption><a class="up link arrow" href="#generative">Building with Generative AI</a><span class="muted up">02</span></figcaption>
       </figure>
       <figure>
         <img src="images/tall-3.jpg" alt="Four colleagues discussing around a wooden table" width="800" height="1067">
-        <figcaption><a class="up link arrow" href="#decisions">Systems and Strategy</a><span class="muted up">03</span></figcaption>
+        <figcaption><a class="up link arrow" href="#decisions">AI decisions framework</a><span class="muted up">03</span></figcaption>
       </figure>
     
     </div>
@@ -309,7 +310,7 @@
         </figure>
         <div>
           <span class="up">Workshop 02</span>
-          <h2>Building with large language models</h2>
+          <h2>Building with Generative AI</h2>
           <p class="intro">In this experimental, fully hands-on lab, teams and individuals are guided from idea or question to a working prototype or demo, learning the frontier techniques and tools to meet their outcome goals.</p>
           <dl class="facts">
             <div><dt class="up">For</dt><dd>Teams or individuals with an idea, question or process to turn into a proof of concept.</dd></div>
