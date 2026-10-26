@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="fr" data-page="top"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>blackbox · Ateliers pratiques sur les outils d’IA pour les entreprises</title>
+<meta name="description" content="Ateliers pratiques sur les outils d'IA, conçus pour les entreprises. En personne et interactifs, axés sur la compréhension des outils et leur pleine utilisation.">
+<link rel="alternate" hreflang="en" href="https://blkboxai.io/">
+<link rel="alternate" hreflang="fr" href="https://blkboxai.io/fr/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 9.5v13L16 30 3 22.5v-13z' fill='%23000'/%3E%3Cpath d='M16 2 29 9.5 16 17 3 9.5z' fill='%23555'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..600&amp;display=swap" rel="stylesheet">
+<style>
+  /* AXEL-style gallery system: white field, black labels, one 13px scale,
+     square edges, hairline rules, photography carries the weight. */
+  :root {
+    color-scheme: light;
+    --white: #ffffff;
+    --ink: #000000;
+    --near: #090909;
+    --rule: #e9e9e9;
+    --studio: #f3f3f3;
+    --inactive: #aaaaaa;
+    --green: #007b43; /* tokiwa, evergreen: the one living colour, a signal, never a field */
+    --f: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /* one spacing scale (4px base) and one section rhythm, used everywhere */
+    --s2: 8px; --s3: 12px; --s4: 16px; --s5: 20px; --s6: 24px; --s7: 32px; --s8: 40px;
+    --side: 20px; --sec: 56px;
+  }
+  * { box-sizing: border-box; }
+  /* jump links land clear of the pinned header (57px, two rows = 85px on phones) */
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  @media (max-width: 760px) { html { scroll-padding-top: 104px; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { margin: 0; background: var(--white); color: var(--near); font-family: var(--f); font-size: 13px; line-height: 1.5; font-weight: 470; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  h1, h2, h3, h4, p { margin: 0; font-weight: inherit; font-size: inherit; }
+  @media (min-width: 761px) { :root { --side: 40px; --sec: 80px; } }
+  .wrap { padding-inline: var(--side); }
+  .up { text-transform: uppercase; font-weight: 520; }
+  .muted { color: var(--inactive); }
+  .rule { border-top: 1px solid var(--rule); }
+  .arrow::after { content: " →"; }
+  .link:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--green); }
+  ::selection { background: color-mix(in srgb, var(--green) 20%, transparent); }
+  section { padding-block: var(--sec); }
+  /* every section opens the same way: hairline, label row, then one 40px step to the content */
+  .row { display: grid; grid-template-columns: 1fr 2fr; gap: var(--s5); border-top: 1px solid var(--rule); padding-top: var(--s4); margin-bottom: var(--s8); }
+  @media (max-width: 760px) { .row { grid-template-columns: 1fr; gap: var(--s2); } }
+
+  /* strip + header */
+  .strip { background: var(--studio); text-align: center; padding: 8px 16px; font-size: 12px; }
+  header { position: sticky; top: 0; z-index: 10; background: var(--white); border-bottom: 1px solid var(--rule); }
+  .head { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 56px; }
+  .head nav { display: flex; gap: 16px; }
+  .head nav a { color: var(--near); }
+  .head nav a:hover { color: var(--inactive); }
+  .wordmark { display: inline-flex; align-items: center; gap: 8px; font-size: 19px; font-weight: 600; letter-spacing: -0.04em; color: var(--ink); }
+  .wordmark svg { width: 18px; height: 18px; }
+  .wordmark b { font-weight: 400; }
+  .head .right { justify-self: end; }
+  @media (max-width: 760px) {
+    .head { grid-template-columns: auto 1fr; height: auto; padding-block: var(--s3); row-gap: var(--s3); }
+    .head .wordmark { order: -1; }
+    .head nav.left { grid-row: 2; grid-column: 1 / -1; }
+  }
+
+  /* hero: headline, then a triptych of tall photographs */
+  .hero-text { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s5); padding-block: var(--sec) var(--s8); }
+  .hero-text h1 { font-size: clamp(22px, 1.4rem + 1.4vw, 36px); line-height: 1.12; letter-spacing: -0.02em; font-weight: 470; max-width: 20ch; color: var(--ink); }
+  .hero-text p { align-self: end; max-width: 46ch; font-size: 14px; }
+  @media (max-width: 760px) { .hero-text { grid-template-columns: 1fr; } }
+  .trip { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s5); }
+  @media (max-width: 760px) { .trip { grid-template-columns: 1fr 1fr; } .trip figure:last-child { display: none; } }
+  .trip figure { margin: 0; }
+  .trip img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; background: var(--studio); }
+  .trip figcaption { display: flex; justify-content: space-between; gap: var(--s2); padding-top: var(--s3); }
+
+  /* editorial two-column rows */
+  .body { grid-column: 2; }
+  @media (max-width: 760px) { .body { grid-column: 1; } }
+  .lead { font-size: clamp(15px, .9rem + .35vw, 19px); line-height: 1.45; color: var(--ink); max-width: 52ch; }
+  .points { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s5); margin-top: var(--s8); }
+  @media (max-width: 760px) { .points { grid-template-columns: 1fr; } }
+  .points div { border-top: 1px solid var(--rule); padding-top: var(--s3); }
+  .points p { margin-top: var(--s2); max-width: 40ch; }
+
+  /* workshops */
+  .ws { display: grid; grid-template-columns: 1fr 2fr; gap: var(--s5); }
+  .ws + .ws { border-top: 1px solid var(--rule); margin-top: var(--sec); padding-top: var(--sec); }
+  @media (max-width: 760px) { .ws { grid-template-columns: 1fr; } }
+  .ws > figure { margin: 0; }
+  .ws > figure img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--studio); }
+  .ws > figure figcaption { padding-top: var(--s3); }
+  .ws h2 { font-size: clamp(20px, 1.1rem + 1vw, 28px); letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); margin-top: var(--s2); }
+  .ws .intro { margin-top: var(--s4); max-width: 64ch; font-size: 14px; line-height: 1.6; }
+  .facts { margin: var(--s6) 0 0; max-width: 64ch; }
+  .facts div { display: grid; grid-template-columns: 110px 1fr; gap: var(--s3); padding-block: var(--s2); border-top: 1px solid var(--rule); }
+  .facts div:last-child { border-bottom: 1px solid var(--rule); }
+  .facts dt { margin: 0; }
+  .facts dd { margin: 0; }
+  .modules { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s5); margin-top: var(--s8); }
+  @media (max-width: 760px) { .modules { grid-template-columns: 1fr; } }
+  .modules h3 { color: var(--ink); margin-top: var(--s2); font-weight: 520; }
+  .modules p { margin-top: var(--s2); line-height: 1.6; }
+  .goal { margin-top: var(--s8); max-width: 64ch; color: var(--ink); }
+
+  /* community: the client's words in the content column, at the lead size */
+  .quote { margin-bottom: 0; }
+  .quote blockquote { margin: 0; max-width: 64ch; font-size: 14px; line-height: 1.65; color: var(--ink); }
+  .quote cite { display: block; margin-top: var(--s4); font-style: normal; }
+
+  /* about: its own small page, one narrow column */
+  #about-page section { padding-top: var(--s8); }
+  .about { display: grid; grid-template-columns: 200px minmax(0, 60ch); gap: var(--s8); }
+  @media (max-width: 760px) { .about { grid-template-columns: 1fr; } .about figure { max-width: 200px; } }
+  .about figure { margin: 0; }
+  .about figure img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; background: var(--studio); }
+  .about .text p { margin-top: var(--s3); line-height: 1.65; }
+  .about .text p.lead { font-size: 15px; line-height: 1.5; color: var(--ink); }
+  .about h3 { margin-top: var(--s6); }
+  [hidden] { display: none !important; }
+
+  /* footer: the last section, built exactly like the others */
+  /* the footer is one compact, even band: the same space above and below, and two identical rows (hairline, 16px, content) */
+  footer { background: var(--studio); border-top: 1px solid var(--rule); padding-block: var(--s7); }
+  .foot { margin-bottom: 0; }
+  /* base line of the footer: copyright under the label column, the logo at the far right, same grid as every section */
+  .foot-base { display: grid; grid-template-columns: 1fr 2fr; gap: var(--s5); align-items: center; margin-top: var(--s4); border-top: 1px solid var(--rule); padding-top: var(--s4); }
+  .foot-base .wordmark { font-size: 14px; justify-self: end; }
+  .foot-base .wordmark svg { width: 15px; height: 15px; }
+  .foot-base small { font-size: 12px; color: var(--inactive); }
+  @media (max-width: 760px) { .foot-base { grid-template-columns: 1fr; gap: var(--s2); } }
+
+  /* "Book a workshop" buttons look like the links around them */
+  .head .right button { font-family: inherit; font-size: inherit; font-weight: inherit; text-transform: inherit; color: var(--near); background: none; border: 0; padding: 0; cursor: pointer; }
+
+  /* the message box: a small square panel that opens above the pill, bottom right, and leaves the page alone */
+  #msgbox { position: fixed; inset: auto 20px 72px auto; margin: 0; width: min(320px, calc(100vw - 40px)); padding: var(--s4); background: var(--white); color: var(--near); border: 1px solid var(--rule); box-shadow: 0 8px 30px rgba(0,0,0,.10); }
+  .msg-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--s3); }
+  .msg-head button { font: inherit; font-size: 18px; line-height: 1; color: var(--inactive); background: none; border: 0; padding: 0 2px; cursor: pointer; }
+  .msg-head button:hover { color: var(--ink); }
+  .msg { display: grid; gap: var(--s3); }
+  .msg label { display: grid; gap: 4px; }
+  .msg input, .msg textarea { font: inherit; color: var(--ink); background: var(--white); border: 1px solid var(--rule); border-radius: 0; padding: 8px 10px; resize: vertical; }
+  .msg input:focus-visible, .msg textarea:focus-visible { outline: none; border-color: var(--ink); }
+  .msg [type=submit] { justify-self: start; font: inherit; font-weight: 520; text-transform: uppercase; background: var(--ink); color: var(--white); border: 0; padding: 10px 14px; cursor: pointer; }
+  .msg [type=submit]:hover { opacity: .85; }
+  .msg [type=submit]:disabled { opacity: .4; cursor: default; }
+  .msg [type=submit]:focus-visible, .msg-head button:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .msg .status:empty { display: none; }
+
+
+  /* page editor (only on localhost): dashed outline on editable text, one small bar at bottom left */
+  .az-editing [contenteditable] { outline: 1px dashed var(--line-strong); outline-offset: 4px; cursor: text; }
+  .az-editing [contenteditable]:focus { outline: 1px solid var(--ink); }
+  .az-pill, .az-bar { position: fixed; left: 20px; bottom: 20px; z-index: 60; background: var(--ink); color: var(--white); }
+  .az-pill { font: inherit; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; border: 0; padding: 10px 14px; cursor: pointer; }
+  .az-bar { display: flex; align-items: center; gap: 8px; padding: 8px 10px; }
+  .az-bar button { font: inherit; font-size: 12px; text-transform: uppercase; background: transparent; color: var(--white); border: 1px solid var(--white); padding: 6px 10px; cursor: pointer; }
+  .az-bar .az-status { max-width: 40ch; font-size: 12px; opacity: .8; }
+</style>
+</head>
+<body class="">
+
+<div class="strip up">Ateliers d’IA en personne pour les entreprises · Écrivez-nous pour réserver un atelier pour votre équipe</div>
+
+<header>
+  <div class="wrap head">
+    <nav class="left up" aria-label="principale">
+      <a href="#workshops">Ateliers</a>
+      <a href="#/about">À propos</a>
+      <a href="../" lang="en" hreflang="en">EN</a>
+    </nav>
+    <a class="wordmark" href="#/" aria-label="Accueil blackbox">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 17.5 32 31 8 17.5Z" fill="#6b6b6b"></path><path d="M8 17.5 32 31v29L8 46.5Z" fill="#1c1c1c"></path><path d="M56 17.5 32 31v29l24-13.5Z" fill="#000"></path></svg>
+      <span>black<b>box</b></span>
+    </a>
+    <nav class="right up" aria-label="contact"><button class="link arrow" type="button" popovertarget="msgbox">Réserver un atelier</button></nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="wrap">
+    <div class="hero-text">
+      <h1>Ateliers pratiques sur les outils d’IA, conçus pour les entreprises.</h1>
+      <p>En personne et interactifs. Nous apprenons aux professionnels et aux équipes à tirer pleinement parti des outils d’IA.</p>
+    </div>
+    <div class="trip">
+      <figure>
+        <img src="../images/tall-2.jpg" alt="Une équipe assise dans une salle lumineuse pendant une séance" width="800" height="1067">
+        <figcaption><a class="up link arrow" href="#toolkit">IA 101</a><span class="muted up">01</span></figcaption>
+      </figure>
+      <figure>
+        <img src="../images/ai-lab.jpg" alt="Quatre personnes travaillant sur des ordinateurs portables autour d'une table ronde carrelée, vues d'en haut" width="1600" height="1067">
+        <figcaption><a class="up link arrow" href="#generative">Labo IA</a><span class="muted up">02</span></figcaption>
+      </figure>
+      <figure>
+        <img src="../images/tall-3.jpg" alt="Quatre collègues en discussion autour d'une table en bois" width="800" height="1067">
+        <figcaption><a class="up link arrow" href="#decisions">Décider avec l’IA</a><span class="muted up">03</span></figcaption>
+      </figure>
+    
+    </div>
+  </div>
+
+  <section id="approach">
+    <div class="wrap">
+      <div class="row">
+        <span class="up">Notre approche</span>
+        <div class="body">
+          <p class="lead">La plupart des équipes n’exploitent qu’une fraction de ce que l’IA peut faire. Nos ateliers enseignent le fonctionnement des outils, pour que chacun découvre comment en tirer le meilleur parti.</p>
+          <div class="points">
+            <div><span class="up">En personne, interactif</span><p>Une approche concrète et pratique, avec vos propres modèles d’IA.</p></div>
+            <div><span class="up">Exploiter pleinement les outils</span><p>Les participants apprennent les techniques et les fonctionnalités qui font passer un outil d’une aide occasionnelle à un levier au quotidien.</p></div>
+            <div><span class="up">Comprendre d’abord</span><p>Savoir comment les outils fonctionnent en coulisses, et quelles méthodes les rendent fiables ou les font halluciner.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="workshops">
+    <div class="wrap">
+      <div class="row"><span class="up">Ateliers</span><p class="muted up">Trois ateliers · En personne · Aucune expérience technique requise</p></div>
+
+      <article class="ws" id="toolkit">
+        <figure>
+          <img src="../images/workshop-2.jpg" alt="Une équipe réunie dans une salle lumineuse pendant un atelier" width="1100" height="800">
+          <figcaption class="up muted">Atelier 01</figcaption>
+        </figure>
+        <div>
+          <span class="up">Atelier 01</span>
+          <h2>IA 101</h2>
+          <p class="intro">L’atelier d’IA dont chaque professionnel a besoin. Nous abordons les techniques essentielles et faisons découvrir des outils qui transformeront votre façon de travailler. Les participants apprennent à exploiter au mieux l’IA selon leur rôle et leurs responsabilités.</p>
+          <dl class="facts">
+            <div><dt class="up">Public</dt><dd>Les professionnels qui utilisent des outils d’IA au quotidien.</dd></div>
+            <div><dt class="up">Format</dt><dd>Pratique, axé sur les tâches réelles des participants.</dd></div>
+            <div><dt class="up">Résultat</dt><dd>Des compétences et des outils concrets qui renforcent leurs capacités.</dd></div>
+          </dl>
+          <div class="modules">
+            <div><span class="up muted">01 · Ingénierie du contexte</span><h3>Maîtriser le contexte.</h3><p>Rédiger des instructions claires, fournir des documents de référence et des exemples, et mettre en place des contextes de projet réutilisables qui donnent des résultats constants et vérifiables.</p></div>
+            <div><span class="up muted">02 · Sélection des données</span><h3>Tout repose sur les données.</h3><p>Trouver et sélectionner les bonnes sources d’information pour alimenter l’IA et obtenir des résultats fondés sur les données.</p></div>
+            <div><span class="up muted">03 · Évaluation</span><h3>Comparer, évaluer, recommencer.</h3><p>Associer les bons outils aux bonnes tâches, vérifier la qualité des résultats, transformer des requêtes ponctuelles en processus reproductibles et reconnaître quand une tâche ne devrait tout simplement pas être confiée à l’IA.</p></div>
+          </div>
+          <p class="goal"><br></p>
+        </div>
+      </article>
+
+      <article class="ws" id="generative">
+        <figure>
+          <img src="../images/ai-lab.jpg" alt="Quatre personnes travaillant sur des ordinateurs portables autour d'une table ronde carrelée, vues d'en haut" width="1600" height="1067">
+          <figcaption class="up muted">Atelier 02</figcaption>
+        </figure>
+        <div>
+          <span class="up">Atelier 02</span>
+          <h2>Labo IA</h2>
+          <p class="intro">Dans ce labo expérimental et entièrement pratique, les participants, en équipe ou individuellement, sont accompagnés de l’idée ou de la question jusqu’à un prototype ou une démo fonctionnels, en apprenant les techniques et les outils de pointe pour atteindre leurs objectifs.</p>
+          <dl class="facts">
+            <div><dt class="up">Public</dt><dd>Les équipes ou les personnes qui ont une idée, une question ou un processus à transformer en preuve de concept.</dd></div>
+            <div><dt class="up">Format</dt><dd>Expérimental et accompagné, adapté à vos objectifs.</dd></div>
+            <div><dt class="up">Résultat</dt><dd>Un prototype robuste et les techniques pour bâtir le suivant.</dd></div>
+          </dl>
+          <div class="modules">
+            <div><span class="up muted">01 · Techniques de pointe</span><h3>Partir de ce qui fonctionne.</h3><p>Une sélection des techniques qui tiennent la route face aux capacités les plus avancées des grands modèles de langage.</p></div>
+            <div><span class="up muted">02 · Réalisation</span><h3>De l’idée à l’outil fonctionnel.</h3><p>Un accompagnement étape par étape, pour évaluer les cadres de réflexion et poser des bases solides pour la prise de décision.</p></div>
+            <div><span class="up muted">03 · Vérification</span><h3>Convaincant ne veut pas dire exact.</h3><p>Tester ce qui a été construit, en comprendre les limites et tracer le chemin d’une démo fonctionnelle à un produit final.</p></div>
+          </div>
+          <p class="goal"><br></p>
+        </div>
+      </article>
+
+      <article class="ws" id="decisions">
+        <figure>
+          <img src="../images/workshop-3.jpg" alt="Quatre collègues en discussion autour d'une table en bois" width="1100" height="800">
+          <figcaption class="up muted">Atelier 03</figcaption>
+        </figure>
+        <div>
+          <span class="up">Atelier 03</span>
+          <h2>Décider avec l’IA</h2>
+          <p class="intro">Avec l’IA, la direction s’attaque à de vrais problèmes organisationnels : cadrer la question, utiliser l’IA pour rechercher, analyser et tester des options, puis transformer les constats en décisions. L’atelier permet de bâtir un cadre opérationnel et un socle de compétences sur lesquels les dirigeants peuvent s’appuyer pour prendre des décisions stratégiques.</p>
+          <dl class="facts">
+            <div><dt class="up">Public</dt><dd>Les dirigeants et les décideurs, sans expérience technique préalable.</dd></div>
+            <div><dt class="up">Format</dt><dd>Animé, pratique, fondé sur des études de cas organisationnelles.</dd></div>
+            <div><dt class="up">Résultat</dt><dd>Un cadre décisionnel augmenté par l’IA.</dd></div>
+          </dl>
+          <div class="modules">
+            <div><span class="up muted">01 · Cadrage</span><h3>Définir le bon problème.</h3><p>Transformer une question d’affaires ou opérationnelle en contexte précis, en remettant en cause les hypothèses et en tenant compte des sources de données pertinentes.</p></div>
+            <div><span class="up muted">02 · Résolution de problèmes</span><h3>S’attaquer au problème avec l’IA.</h3><p>Utiliser l’IA pour faire de la recherche, modéliser des scénarios, comparer des options et mettre les hypothèses à l’épreuve sur de vrais problèmes organisationnels.</p></div>
+            <div><span class="up muted">03 · Décision</span><h3>De l’analyse à la décision.</h3><p>Confronter les constats obtenus avec l’IA à votre propre expertise, soupeser les données probantes et garder le jugement et la responsabilité là où ils doivent être : entre les mains de la direction.</p></div>
+          </div>
+          <p class="goal"><br></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="row quote">
+        <span class="up">Témoignage</span>
+        <div class="body">
+          <blockquote>« Travailler avec blackbox a complètement changé la donne pour notre entreprise. L’équipe a une capacité unique à repérer rapidement les sources d’inefficience et à proposer des solutions claires et concrètes qui nous ont permis d’accroître considérablement nos activités. Ses analyses et sa clarté ont comblé des lacunes dont nous ignorions même l’existence, et ont propulsé notre croissance à un niveau jamais atteint auparavant. Sa compréhension fine des systèmes complexes, alliée à un véritable esprit de résolution de problèmes, en fait un atout inestimable. De plus, c’est une équipe formidable avec qui travailler : professionnelle, collaborative et véritablement engagée dans la réussite des équipes. Je recommande vivement blackbox à quiconque souhaite faire progresser son entreprise grâce à une mise en œuvre stratégique de l’IA et à l’efficacité opérationnelle. »</blockquote>
+          <cite class="up muted">One Pro Sports Management · traduction libre</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+<main id="about-page" hidden="">
+  <section>
+    <div class="wrap">
+      <div class="about">
+        <figure><img src="../images/about.jpg" alt="" width="1000" height="800"></figure>
+        <div class="text">
+          <p class="lead" style="margin-top:0">J’aide les organisations à mettre l’IA à profit, sans perdre la maîtrise de leurs données, de leur budget ni de leur jugement.</p>
+          <p>Ma philosophie : une mise en œuvre de l’IA sans compréhension crée de l’incertitude et des systèmes peu fiables. Ce qui rend l’IA utile, c’est d’abord la clarté de votre réflexion. C’est ainsi que je travaille : j’aide les équipes à comprendre ce qui se passe, comment les outils fonctionnent et ce qu’ils font. L’efficacité et la rapidité découlent de cette démarche.</p>
+          <h3 class="up">Parcours</h3>
+          <p>Je suis titulaire d’un baccalauréat en sciences de l’information (<span lang="en">B.S. in Information</span>) de l’Université du Michigan (2019), où j’ai combiné la science des données et Python d’un côté, et l’interaction humain-machine et l’utilisabilité de l’autre. Le fil conducteur : dans un système, la technologie et les personnes doivent toujours avoir le même poids.</p>
+          <p>Chez seriesOne, une plateforme de titres numériques inscrite auprès de la FINRA, j’étais analyste principal : j’effectuais la vérification diligente des émetteurs potentiels, je rédigeais des documents techniques et je travaillais directement avec la haute direction sur le développement de produits.</p>
+          <p>Depuis, je conçois et déploie des systèmes à base d’agents qui simplifient les opérations des équipes et rendent les processus plus efficaces.</p>
+          <p>Avant de devenir consultant, j’étais joueur de soccer professionnel en première division canadienne. J’ai aussi joué dans la Division 1 de la NCAA pour l’une des universités les plus prestigieuses des États-Unis. Mon expérience au plus haut niveau du sport m’a appris à aborder les grands problèmes avec lucidité, sous pression et en équipe.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="row foot">
+      <span class="up">Contact</span>
+      <p>Écrivez-nous&nbsp;:&nbsp;&nbsp;<a class="link" href="mailto:info@blkboxai.io">info@blkboxai.io</a></p>
+    </div>
+    <div class="foot-base">
+      <small>© 2026 blackbox · Tous droits réservés.</small>
+      <span class="wordmark" aria-label="blackbox"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 17.5 32 31 8 17.5Z" fill="#6b6b6b"></path><path d="M8 17.5 32 31v29L8 46.5Z" fill="#1c1c1c"></path><path d="M56 17.5 32 31v29l24-13.5Z" fill="#000"></path></svg><span>black<b>box</b></span></span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ponytail: FormSubmit relays the message by email (GitHub Pages has no backend); swap the action for your own endpoint if volume or privacy needs grow -->
+<div id="msgbox" popover="" role="dialog" aria-labelledby="msgbox-title">
+  <div class="msg-head"><span class="up" id="msgbox-title">Réserver un atelier</span><button type="button" popovertarget="msgbox" popovertargetaction="hide" aria-label="Fermer">×</button></div>
+  <form class="msg" action="https://formsubmit.co/info@blkboxai.io" method="POST">
+    <input type="hidden" name="_subject" value="Demande d'atelier · blackbox">
+    <input type="hidden" name="_template" value="table">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" data-ddg-inputtype="unknown">
+    <label><span class="up">Nom</span><input name="name" required="" maxlength="100" autocomplete="name" data-ddg-inputtype="identities.fullName" data-ddg-autofill="true"></label>
+    <label><span class="up">Courriel</span><input name="email" type="email" required="" maxlength="200" autocomplete="email" data-ddg-inputtype="identities.emailAddress" data-ddg-autofill="true"></label>
+    <label><span class="up">Message</span><textarea name="message" rows="4" required="" maxlength="4000" placeholder="Parlez-nous de vos objectifs pour l'atelier."></textarea></label>
+    <button type="submit" class="arrow">Envoyer</button>
+    <p class="status" role="status" aria-live="polite"></p>
+  </form>
+</div>
+
+<script>
+  (function () {
+    var S = { sending: "Envoi…", thanks: "Merci. Votre message a bien été envoyé." };
+
+    var pages = { "#/about": "about-page" };
+    var mains = document.querySelectorAll("main");
+    function route() {
+      if (location.hash === "#contact") return;              // footer is on every page
+      var page = pages[location.hash] || "top";
+      document.documentElement.setAttribute("data-page", page);
+      mains.forEach(function (m) { m.hidden = m.id !== page; });
+      var target = page === "top" && location.hash.length > 2 && document.getElementById(location.hash.slice(1));
+      if (target) target.scrollIntoView(); else window.scrollTo(0, 0);
+    }
+    window.addEventListener("hashchange", route);
+    route();
+
+    // "Book a workshop" opens the message box, ready to type
+    var box = document.getElementById("msgbox"), form = box.querySelector(".msg");
+    var status = form.querySelector(".status"), send = form.querySelector("[type=submit]");
+    box.addEventListener("toggle", function (e) { if (e.newState === "open") form.elements.name.focus(); });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      send.disabled = true;
+      status.textContent = S.sending;
+      fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        signal: AbortSignal.timeout(10000)   // a blocked or down relay fails in 10s, not minutes
+      }).then(function (r) { return r.json(); }).then(function (d) {
+        if (String(d.success) !== "true") throw new Error(d.message);
+        form.reset();
+        status.textContent = S.thanks;
+      }).catch(function () {   // relay blocked, down or not activated: hand the message, already written, to their email app
+        var f = form.elements, a = document.createElement("a");
+        a.className = "link";
+        a.href = "mailto:info@blkboxai.io?subject=" + encodeURIComponent(f._subject.value) +
+          "&body=" + encodeURIComponent(f.message.value + "\n\n" + f.name.value + "\n" + f.email.value);
+        a.textContent = "Envoyez-le depuis votre application de courriel";
+        status.replaceChildren("Impossible d’envoyer le message à partir du site. ", a, " : votre message est déjà prérempli.");
+      }).finally(function () { send.disabled = false; });
+    });
+  })();
+</script>
+<script id="az-edit">
+(function () {
+  "use strict";
+  /* Local only: "Edit page" makes the text editable and Save writes index.html through serve.mjs.
+     Only serve.mjs stamps the az-version meta, so the editor shows only where saving works; the public site never runs it.
+     Opened as a file, hop over to the server if it's running. */
+  var SERVER = "http://localhost:5051/fr/";
+  if (location.protocol === "file:") {
+    fetch(SERVER, { mode: "no-cors", cache: "no-store" }).then(function () { location.replace(SERVER + location.hash); }, function () {});
+    return;
+  }
+  if (!document.querySelector('meta[name="az-version"]')) return;
+
+  var TARGETS = "h1,h2,h3,p,dt,dd,blockquote,cite,figcaption,nav a,.strip,.wordmark span,small,span.up,span.muted";
+  var editing = false, els = [], pill, bar, status;
+
+  function say(msg) { status.textContent = msg; }
+  function on() {
+    editing = true;
+    document.body.classList.add("az-editing");
+    els = Array.prototype.filter.call(document.querySelectorAll(TARGETS), function (el) {
+      return !el.closest("form,#msgbox,.az-edit-ui");
+    });
+    els.forEach(function (el) { el.setAttribute("contenteditable", "true"); el.setAttribute("spellcheck", "true"); });
+    pill.hidden = true; bar.hidden = false;
+    say("Click any text to edit. Save writes index.html.");
+  }
+  function off() {
+    editing = false;
+    els.forEach(function (el) { el.removeAttribute("contenteditable"); el.removeAttribute("spellcheck"); });
+    document.body.classList.remove("az-editing");
+    pill.hidden = false; bar.hidden = true;
+  }
+  function save() {
+    var clone = document.documentElement.cloneNode(true);
+    clone.querySelectorAll("[contenteditable],[spellcheck]").forEach(function (el) {
+      el.removeAttribute("contenteditable"); el.removeAttribute("spellcheck");
+    });
+    clone.querySelectorAll(".az-edit-ui").forEach(function (el) { el.remove(); });
+    clone.querySelector("body").classList.remove("az-editing"); // clone is an <html> element, not a document: it has no .body
+    var meta = clone.querySelector('meta[name="az-version"]');
+    var version = meta ? meta.content : "";
+    if (meta) meta.remove();
+    say("Saving…");
+    fetch(location.pathname, { method: "PUT", body: "<!doctype html>\n" + clone.outerHTML, headers: { "X-Az-Version": version } })
+      .then(function (r) {
+        if (r.status === 409) { say("index.html changed since this page opened. Reload and edit again."); return; }
+        if (!r.ok) throw new Error(r.status);
+        location.reload();
+      })
+      .catch(function () { say("Couldn't save. Is serve.mjs still running?"); });
+  }
+
+  pill = document.createElement("button");
+  pill.type = "button"; pill.className = "az-edit-ui az-pill"; pill.textContent = "Edit page";
+  bar = document.createElement("div");
+  bar.className = "az-edit-ui az-bar"; bar.hidden = true;
+  bar.innerHTML = '<span class="az-status"></span><button type="button" data-act="save">Save</button><button type="button" data-act="close">Close</button>';
+  status = bar.querySelector(".az-status");
+  document.body.append(pill, bar);
+
+  pill.addEventListener("click", on);
+  bar.addEventListener("click", function (e) {
+    var act = e.target.getAttribute("data-act");
+    if (act === "save") save();
+    if (act === "close") off();
+  });
+  document.addEventListener("click", function (e) {   // while editing, a click on a link edits its text instead
+    if (editing && e.target.closest("a[href]") && !e.target.closest(".az-edit-ui")) e.preventDefault();
+  }, true);
+  document.addEventListener("paste", function (e) {   // plain text only, on one line
+    if (!editing || !e.target.closest || !e.target.closest("[contenteditable]")) return;
+    e.preventDefault();
+    var text = (e.clipboardData || window.clipboardData).getData("text/plain");
+    document.execCommand("insertText", false, text.replace(/\s*[\r\n]+\s*/g, " "));
+  }, true);
+  document.addEventListener("keydown", function (e) {
+    if (!editing) return;
+    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") { e.preventDefault(); save(); return; }
+    // Enter finishes the edit instead of slipping a <div> or <br> into a heading
+    if (e.key === "Enter" && e.target.closest && e.target.closest("[contenteditable]")) { e.preventDefault(); e.target.blur(); }
+  });
+})();
+</script>
+
+
+</body></html>

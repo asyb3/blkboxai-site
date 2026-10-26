@@ -44,9 +44,9 @@ try {
   check(await run(`Array.from(document.querySelectorAll(".trip img, #workshops img")).every(function (img) {
     return img.complete && img.naturalWidth > 0;
   })`), "workshop photos load");
-  check(await run(`Array.from(document.querySelectorAll("nav.left a"), function (a) { return a.textContent.trim(); }).join() === "Workshops,About" &&
+  check(await run(`Array.from(document.querySelectorAll("nav.left a"), function (a) { return a.textContent.trim(); }).join() === "Workshops,About,FR" &&
     document.querySelector(".head .wordmark").textContent.trim() === "blackbox" &&
-    document.querySelectorAll("main").length === 2`), "blackbox logo, only Workshops and About");
+    document.querySelectorAll("main").length === 2`), "blackbox logo; menu is Workshops, About, FR");
   await run(`location.hash = "#/about"`);
   await sleep(150);
   check(await run(`document.documentElement.getAttribute("data-page") === "about-page" &&
@@ -70,6 +70,18 @@ try {
     return href.startsWith("mailto:info@blkboxai.io?subject=") && href.includes("Hello & welcome") && href.includes("ada@example.com");
   })()`), "a blocked send hands the written message to the email app");
 
+  // the French page: its own URL, French text, same three workshops and photos, and a way back
+  check(await run(`document.querySelector('nav.left a[hreflang="fr"]').getAttribute("href") === "fr/"`), "the English menu links to the French page");
+  await send("Page.navigate", { url: "http://localhost:5051/fr/" });
+  await sleep(2000);
+  check(await run(`document.documentElement.lang === "fr" &&
+    document.querySelector("h1").textContent.trim() === "Ateliers pratiques sur les outils d’IA, conçus pour les entreprises." &&
+    document.querySelectorAll("#workshops .ws").length === 3 &&
+    Array.from(document.images).every(function (img) { return img.complete && img.naturalWidth > 0; }) &&
+    document.querySelector('nav.left a[hreflang="en"]').href === "http://localhost:5051/"`), "the French page loads, with its photos and a link back to English");
+  await send("Page.navigate", { url: "http://localhost:5051/" });
+  await sleep(2000);
+
   check(await run(`!!document.querySelector(".az-pill")`), "Edit page button is shown");
   await run(`document.querySelector(".az-pill").click()`);
   check(await run(`document.querySelector("h1").getAttribute("contenteditable") === "true"`), "landing headline is editable");
@@ -85,6 +97,7 @@ try {
   check(after.includes(MARK), "the edit reached index.html");
   check(after.includes("In-person AI tool workshops for companies"), "the workshops strip survives the save");
   check(after.startsWith("<!doctype html>"), "saved file starts with the doctype");
+  check(!/<head>\s*\n\s*\n/.test(after), "a save leaves no blank lines at the top of the page");
   const markup = after.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, ""); // the editor's own code may name these
   const leftover = markup.match(/az-version|contenteditable|spellcheck|az-edit-ui|az-editing/);
   check(!leftover, "no editor leftovers in the saved markup" + (leftover ? ": " + leftover[0] : ""));
