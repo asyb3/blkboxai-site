@@ -57,6 +57,19 @@ try {
   check(await run(`document.documentElement.clientWidth === document.documentElement.scrollWidth`), "the landing fits a phone width");
   await send("Emulation.clearDeviceMetricsOverride");
 
+  // contact form with the relay blocked (as ProtonVPN's NetShield does): the written message must reach the email app
+  check(await run(`(async function () {
+    var realFetch = window.fetch, f = document.querySelector("#msgbox form");
+    window.fetch = function () { return Promise.reject(new Error("blocked")); };
+    f.elements.name.value = "Ada"; f.elements.email.value = "ada@example.com"; f.elements.message.value = "Hello & welcome";
+    f.requestSubmit();
+    await new Promise(function (r) { setTimeout(r, 300); });
+    window.fetch = realFetch;
+    var a = f.querySelector(".status a"), href = a ? decodeURIComponent(a.href) : "";
+    f.reset(); f.querySelector(".status").textContent = "";
+    return href.startsWith("mailto:info@blkboxai.io?subject=") && href.includes("Hello & welcome") && href.includes("ada@example.com");
+  })()`), "a blocked send hands the written message to the email app");
+
   check(await run(`!!document.querySelector(".az-pill")`), "Edit page button is shown");
   await run(`document.querySelector(".az-pill").click()`);
   check(await run(`document.querySelector("h1").getAttribute("contenteditable") === "true"`), "landing headline is editable");

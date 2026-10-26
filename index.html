@@ -412,7 +412,7 @@
 
 <script>
   (function () {
-    var S = { sending: "Sending…", thanks: "Thank you. Your message has been sent.", err: 'Couldn\'t send just now. Please email <a class="link" href="mailto:info@blkboxai.io">info@blkboxai.io</a>.' };
+    var S = { sending: "Sending…", thanks: "Thank you. Your message has been sent." };
 
     var pages = { "#/about": "about-page" };
     var mains = document.querySelectorAll("main");
@@ -438,13 +438,19 @@
       fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        signal: AbortSignal.timeout(10000)   // a blocked or down relay fails in 10s, not minutes
       }).then(function (r) { return r.json(); }).then(function (d) {
         if (String(d.success) !== "true") throw new Error(d.message);
         form.reset();
         status.textContent = S.thanks;
-      }).catch(function () {   // keep what they typed; give them the direct route
-        status.innerHTML = S.err;
+      }).catch(function () {   // relay blocked, down or not activated: hand the message, already written, to their email app
+        var f = form.elements, a = document.createElement("a");
+        a.className = "link";
+        a.href = "mailto:info@blkboxai.io?subject=" + encodeURIComponent(f._subject.value) +
+          "&body=" + encodeURIComponent(f.message.value + "\n\n" + f.name.value + "\n" + f.email.value);
+        a.textContent = "Send it from your email app";
+        status.replaceChildren("Couldn't send from the site. ", a, ", your message is already filled in.");
       }).finally(function () { send.disabled = false; });
     });
   })();
