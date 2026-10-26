@@ -175,11 +175,11 @@
   [hidden] { display: none !important; }
 
   /* footer: the last section, built exactly like the others */
-  /* the footer is one full-width band: contact on top, the name on the bottom line */
-  footer { background: var(--studio); border-top: 1px solid var(--rule); padding-block: var(--sec) var(--s6); }
-  .foot { margin-bottom: 0; border-top: 0; padding-top: 0; } /* the grey band already opens the footer, so no hairline here */
+  /* the footer is one compact, even band: the same space above and below, and two identical rows (hairline, 16px, content) */
+  footer { background: var(--studio); border-top: 1px solid var(--rule); padding-block: var(--s7); }
+  .foot { margin-bottom: 0; }
   /* base line of the footer: copyright under the label column, the logo at the far right, same grid as every section */
-  .foot-base { display: grid; grid-template-columns: 1fr 2fr; gap: var(--s5); align-items: center; margin-top: var(--s7); border-top: 1px solid var(--rule); padding-top: var(--s4); }
+  .foot-base { display: grid; grid-template-columns: 1fr 2fr; gap: var(--s5); align-items: center; margin-top: var(--s4); border-top: 1px solid var(--rule); padding-top: var(--s4); }
   .foot-base .wordmark { font-size: 14px; justify-self: end; }
   .foot-base .wordmark svg { width: 15px; height: 15px; }
   .foot-base small { font-size: 12px; color: var(--inactive); }
