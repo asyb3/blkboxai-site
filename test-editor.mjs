@@ -44,9 +44,9 @@ try {
   check(await run(`Array.from(document.querySelectorAll(".trip img, #workshops img")).every(function (img) {
     return img.complete && img.naturalWidth > 0;
   })`), "workshop photos load");
-  check(await run(`Array.from(document.querySelectorAll("nav.left a"), function (a) { return a.textContent.trim(); }).join() === "Workshops,About,FR" &&
+  check(await run(`Array.from(document.querySelectorAll("nav.left a"), function (a) { return a.textContent.trim(); }).join() === "Workshops,About" && !!document.querySelector('nav.right a[hreflang="fr"]') &&
     document.querySelector(".head .wordmark").textContent.trim() === "blackbox" &&
-    document.querySelectorAll("main").length === 2`), "blackbox logo; menu is Workshops, About, FR");
+    document.querySelectorAll("main").length === 2`), "blackbox logo; menu is Workshops, About; FR on the right");
   await run(`location.hash = "#/about"`);
   await sleep(150);
   check(await run(`document.documentElement.getAttribute("data-page") === "about-page" &&
@@ -71,14 +71,14 @@ try {
   })()`), "a blocked send hands the written message to the email app");
 
   // the French page: its own URL, French text, same three workshops and photos, and a way back
-  check(await run(`document.querySelector('nav.left a[hreflang="fr"]').getAttribute("href") === "fr/"`), "the English menu links to the French page");
+  check(await run(`document.querySelector('nav.right a[hreflang="fr"]').getAttribute("href") === "fr/"`), "the English menu links to the French page");
   await send("Page.navigate", { url: "http://localhost:5051/fr/" });
   await sleep(2000);
   check(await run(`document.documentElement.lang === "fr" &&
     document.querySelector("h1").textContent.trim() === "Ateliers pratiques sur les outils d’IA, conçus pour les entreprises." &&
     document.querySelectorAll("#workshops .ws").length === 3 &&
     Array.from(document.images).every(function (img) { return img.complete && img.naturalWidth > 0; }) &&
-    document.querySelector('nav.left a[hreflang="en"]').href === "http://localhost:5051/"`), "the French page loads, with its photos and a link back to English");
+    document.querySelector('nav.right a[hreflang="en"]').href === "http://localhost:5051/"`), "the French page loads, with its photos and a link back to English");
   await send("Page.navigate", { url: "http://localhost:5051/" });
   await sleep(2000);
 

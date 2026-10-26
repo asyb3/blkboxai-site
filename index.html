@@ -41,7 +41,7 @@
   .up { text-transform: uppercase; font-weight: 520; }
   .muted { color: var(--inactive); }
   .rule { border-top: 1px solid var(--rule); }
-  .arrow::after { content: " →"; }
+  .arrow::after { content: "\00a0→"; } /* non-breaking: the arrow never wraps alone */
   .link:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--green); }
   ::selection { background: color-mix(in srgb, var(--green) 20%, transparent); }
   section { padding-block: var(--sec); }
@@ -61,7 +61,7 @@
   .wordmark b { font-weight: 400; }
   .head .right { justify-self: end; }
   @media (max-width: 760px) {
-    .head { grid-template-columns: auto 1fr; height: auto; padding-block: var(--s3); row-gap: var(--s3); }
+    .head { grid-template-columns: auto 1fr; height: auto; padding-block: var(--s3); row-gap: var(--s3); column-gap: var(--s4); }
     .head .wordmark { order: -1; }
     .head nav.left { grid-row: 2; grid-column: 1 / -1; }
   }
@@ -171,13 +171,12 @@
     <nav class="left up" aria-label="primary">
       <a href="#workshops">Workshops</a>
       <a href="#/about">About</a>
-      <a href="fr/" lang="fr" hreflang="fr">FR</a>
     </nav>
     <a class="wordmark" href="#/" aria-label="blackbox home">
       <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 17.5 32 31 8 17.5Z" fill="#6b6b6b"></path><path d="M8 17.5 32 31v29L8 46.5Z" fill="#1c1c1c"></path><path d="M56 17.5 32 31v29l24-13.5Z" fill="#000"></path></svg>
       <span>black<b>box</b></span>
     </a>
-    <nav class="right up" aria-label="contact"><button class="link arrow" type="button" popovertarget="msgbox">Book a workshop</button></nav>
+    <nav class="right up" aria-label="contact"><button class="link arrow" type="button" popovertarget="msgbox">Book a workshop</button><a href="fr/" lang="fr" hreflang="fr">FR</a></nav>
   </div>
 </header>
 
