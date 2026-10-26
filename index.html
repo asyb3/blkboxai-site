@@ -177,12 +177,11 @@
   /* the footer is one full-width band: contact on top, the name on the bottom line */
   footer { background: var(--studio); border-top: 1px solid var(--rule); padding-block: var(--sec) var(--s6); }
   .foot { margin-bottom: 0; }
-  .foot p { margin-top: var(--s2); }
-  /* base line of the footer: brand under the label column, copyright under the content, same grid as every section */
+  /* base line of the footer: copyright under the label column, the logo at the far right, same grid as every section */
   .foot-base { display: grid; grid-template-columns: 1fr 2fr; gap: var(--s5); align-items: center; margin-top: var(--s7); border-top: 1px solid var(--rule); padding-top: var(--s4); }
-  .foot-base .wordmark { font-size: 14px; }
+  .foot-base .wordmark { font-size: 14px; justify-self: end; }
   .foot-base .wordmark svg { width: 15px; height: 15px; }
-  .foot-base small { font-size: 12px; color: var(--inactive); justify-self: end; text-align: right; }
+  .foot-base small { font-size: 12px; color: var(--inactive); }
   @media (max-width: 760px) { .foot-base { grid-template-columns: 1fr; gap: var(--s2); } }
 
   /* "Book a workshop" buttons look like the links around them */
@@ -203,10 +202,6 @@
   .msg [type=submit]:focus-visible, .msg-head button:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
   .msg .status:empty { display: none; }
 
-  /* contact: "Book a workshop" is a title in the content column, at the workshop-title size; it opens the message box */
-  .foot-cta { font: inherit; font-size: clamp(20px, 1.1rem + 1vw, 28px); letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); text-align: left; background: none; border: 0; padding: 0; cursor: pointer; }
-  .foot-cta:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--green); }
-  .foot-cta:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
 
   /* page editor (only on localhost): dashed outline on editable text, one small bar at bottom left */
   .az-editing [contenteditable] { outline: 1px dashed var(--line-strong); outline-offset: 4px; cursor: text; }
@@ -250,7 +245,7 @@
       </figure>
       <figure>
         <img src="images/ai-lab.jpg" alt="Four people working on laptops around a round tiled table, seen from above" width="1600" height="1067">
-        <figcaption><a class="up link arrow" href="#generative">Building with Generative AI</a><span class="muted up">02</span></figcaption>
+        <figcaption><a class="up link arrow" href="#generative">AI Labs</a><span class="muted up">02</span></figcaption>
       </figure>
       <figure>
         <img src="images/tall-3.jpg" alt="Four colleagues discussing around a wooden table" width="800" height="1067">
@@ -310,7 +305,7 @@
         </figure>
         <div>
           <span class="up">Workshop 02</span>
-          <h2>Building with Generative AI</h2>
+          <h2>AI Labs</h2>
           <p class="intro">In this experimental, fully hands-on lab, teams and individuals are guided from idea or question to a working prototype or demo, learning the frontier techniques and tools to meet their outcome goals.</p>
           <dl class="facts">
             <div><dt class="up">For</dt><dd>Teams or individuals with an idea, question or process to turn into a proof of concept.</dd></div>
@@ -389,14 +384,11 @@
   <div class="wrap">
     <div class="row foot">
       <span class="up">Contact</span>
-      <div>
-        <button class="foot-cta arrow" type="button" popovertarget="msgbox">Book a workshop</button>
-        <p>Let's talk.</p>
-      </div>
+      <p>Let's talk. <a class="link" href="mailto:info@blkboxai.io">info@blkboxai.io</a></p>
     </div>
     <div class="foot-base">
-      <span class="wordmark" aria-label="blackbox"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 17.5 32 31 8 17.5Z" fill="#6b6b6b"></path><path d="M8 17.5 32 31v29L8 46.5Z" fill="#1c1c1c"></path><path d="M56 17.5 32 31v29l24-13.5Z" fill="#000"></path></svg><span>black<b>box</b></span></span>
       <small>© 2026 blackbox · All rights reserved.</small>
+      <span class="wordmark" aria-label="blackbox"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 17.5 32 31 8 17.5Z" fill="#6b6b6b"></path><path d="M8 17.5 32 31v29L8 46.5Z" fill="#1c1c1c"></path><path d="M56 17.5 32 31v29l24-13.5Z" fill="#000"></path></svg><span>black<b>box</b></span></span>
     </div>
   </div>
 </footer>
