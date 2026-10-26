@@ -60,6 +60,10 @@
   .wordmark svg { width: 18px; height: 18px; }
   .wordmark b { font-weight: 400; }
   .head .right { justify-self: end; }
+  /* language switch: EN · FR in the same order on both pages; the current one is dark, the other is the link */
+  .head .lang { display: inline-flex; gap: 10px; }
+  .head .lang a { color: #767676; }
+  .head .lang a:hover { color: var(--near); }
   @media (max-width: 760px) {
     .head { grid-template-columns: auto 1fr; height: auto; padding-block: var(--s3); row-gap: var(--s3); column-gap: var(--s4); }
     .head .wordmark { order: -1; }
@@ -176,7 +180,7 @@
       <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 17.5 32 31 8 17.5Z" fill="#6b6b6b"></path><path d="M8 17.5 32 31v29L8 46.5Z" fill="#1c1c1c"></path><path d="M56 17.5 32 31v29l24-13.5Z" fill="#000"></path></svg>
       <span>black<b>box</b></span>
     </a>
-    <nav class="right up" aria-label="contact"><button class="link arrow" type="button" popovertarget="msgbox">Réserver un atelier</button><a href="../" lang="en" hreflang="en">EN</a></nav>
+    <nav class="right up" aria-label="contact"><button class="link arrow" type="button" popovertarget="msgbox">Réserver un atelier</button><span class="lang"><a href="../" lang="en" hreflang="en">EN</a><span aria-current="true">FR</span></span></nav>
   </div>
 </header>
 
