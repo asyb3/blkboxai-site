@@ -53,6 +53,7 @@
 
 
 
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>blackbox · Company focused hands-on AI tool workshops</title>
@@ -176,7 +177,7 @@
   /* footer: the last section, built exactly like the others */
   /* the footer is one full-width band: contact on top, the name on the bottom line */
   footer { background: var(--studio); border-top: 1px solid var(--rule); padding-block: var(--sec) var(--s6); }
-  .foot { margin-bottom: 0; }
+  .foot { margin-bottom: 0; border-top: 0; padding-top: 0; } /* the grey band already opens the footer, so no hairline here */
   /* base line of the footer: copyright under the label column, the logo at the far right, same grid as every section */
   .foot-base { display: grid; grid-template-columns: 1fr 2fr; gap: var(--s5); align-items: center; margin-top: var(--s7); border-top: 1px solid var(--rule); padding-top: var(--s4); }
   .foot-base .wordmark { font-size: 14px; justify-self: end; }
@@ -384,7 +385,7 @@
   <div class="wrap">
     <div class="row foot">
       <span class="up">Contact</span>
-      <p>Let's talk. <a class="link" href="mailto:info@blkboxai.io">info@blkboxai.io</a></p>
+      <p>Get in touch:&nbsp;&nbsp;<a class="link" href="mailto:info@blkboxai.io">info@blkboxai.io</a></p>
     </div>
     <div class="foot-base">
       <small>© 2026 blackbox · All rights reserved.</small>
