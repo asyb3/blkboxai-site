@@ -115,20 +115,20 @@
   .case-art { margin: 0 0 var(--s4); aspect-ratio: 40 / 26; overflow: hidden; background: var(--studio); }
   .case-art img { display: block; width: 100%; height: 100%; object-fit: cover; }
   .modules.full { margin-top: 0; }
-  .hero { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: clamp(380px, 58vh, 620px); background: #2b2620; color: var(--white); overflow: hidden; }
+  .hero { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: clamp(380px, 58vh, 620px); background: var(--white); color: var(--ink); overflow: hidden; }
   .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.56)); }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(var(--white), rgb(255 255 255 / 0) 22%, rgb(255 255 255 / 0) 42%, rgb(255 255 255 / .82) 76%, var(--white)); }
   .hero .wrap { position: relative; z-index: 1; }
   .hero .hero-text h1 { color: inherit; }
   #top > section { padding-block: var(--sec) 0; }
   #top > section:last-child { padding-bottom: var(--sec); }
   #top > section .row { margin-bottom: 0; }
   .more { display: inline-block; margin-top: var(--s4); }
-  .hero button { position: absolute; z-index: 1; right: var(--side); bottom: 12px; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 50%; background: rgb(255 255 255 / .2); cursor: pointer; opacity: .8; transition: opacity .2s; }
+  .hero button { position: absolute; z-index: 1; right: var(--side); bottom: 12px; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 50%; background: rgb(0 0 0 / .07); cursor: pointer; opacity: .8; transition: opacity .2s; }
   .hero button:hover, .hero button:focus-visible { opacity: 1; }
-  .hero button:focus-visible { outline: 2px solid var(--white); outline-offset: 2px; }
-  .hero button::before { content: ""; position: absolute; inset: 9px 10px; border-inline: 3px solid #fff; }
-  .hero button[aria-pressed="true"]::before { inset: 8px 8px 8px 11px; border: 0; background: #fff; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+  .hero button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .hero button::before { content: ""; position: absolute; inset: 9px 10px; border-inline: 3px solid var(--ink); }
+  .hero button[aria-pressed="true"]::before { inset: 8px 8px 8px 11px; border: 0; background: var(--ink); clip-path: polygon(0 0, 100% 50%, 0 100%); }
   .foot { position: relative; }
   .roll { position: absolute; left: 0; right: 0; top: calc(-.8 * 28px - 1px); height: 28px; pointer-events: none; }
   .roll canvas { display: block; width: 100%; height: 100%; }
@@ -203,14 +203,14 @@
 <header>
   <div class="wrap head">
     <nav class="left up" aria-label="principale">
-      <div class="dd"><a href="#/ai-integration">Intégration de l’IA</a><div class="sub"><div><a href="#strategy">Services-conseils stratégiques</a><a href="#deployment">Intégration</a><a href="#cases">Études de cas</a><a href="#referral">Témoignage client</a></div></div></div>
-      <div class="dd"><a href="#/workshops">Ateliers</a><div class="sub"><div><a href="#toolkit">IA 101</a><a href="#generative">Labo IA</a><a href="#decisions">Décider avec l’IA</a></div></div></div>
+      <div class="dd"><a href="#/ai-integration">Intégration de l’IA</a><div class="sub"><div><a href="#strategy">Services-conseils stratégiques</a><a href="#deployment">Intégration</a><a href="#cases">Réalisations</a><a href="#referral">Témoignage client</a></div></div></div>
+      <div class="dd"><a href="#/workshops">Littératie en IA</a><div class="sub"><div><a href="#/workshops">Ateliers</a><a href="#/events">Événements</a></div></div></div>
     </nav>
     <a class="wordmark" href="#/" aria-label="Accueil blackbox">
       <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 17.5 32 31 8 17.5Z" fill="#6b6b6b"></path><path d="M8 17.5 32 31v29L8 46.5Z" fill="#1c1c1c"></path><path d="M56 17.5 32 31v29l24-13.5Z" fill="#000"></path></svg>
       <span>black<b>box</b></span>
     </a>
-    <nav class="right up" aria-label="secondaire"><a href="#/events">Événements</a><a href="#/about">À propos</a><span class="lang"><a href="../" lang="en" hreflang="en">EN</a><span aria-current="true">FR</span></span></nav>
+    <nav class="right up" aria-label="secondaire"><a href="#/about">À propos</a><span class="lang"><a href="../" lang="en" hreflang="en">EN</a><span aria-current="true">FR</span></span></nav>
   </div>
 </header>
 
@@ -233,7 +233,7 @@
         <span class="up">Intégration de l’IA</span>
         <div class="body">
           <p class="lead">De la vision à la feuille de route, jusqu’au déploiement. Nous aidons les organisations à adopter l’IA là où elle fait gagner en productivité, et à l’intégrer de façon sécuritaire à leur façon de travailler.</p>
-          <p class="tease muted up">Services-conseils stratégiques · Intégration · Études de cas</p>
+          <p class="tease muted up">Services-conseils stratégiques · Intégration · Réalisations</p>
           <a class="up link arrow more" href="#/ai-integration">En savoir plus</a>
         </div>
       </div>
@@ -243,10 +243,10 @@
   <section id="workshops">
     <div class="wrap">
       <div class="row">
-        <span class="up">Ateliers</span>
+        <span class="up">Littératie en IA</span>
         <div class="body">
           <p class="lead">Une formation pratique en IA pour rehausser les compétences de votre main-d’œuvre. Conçue autour du vrai travail de votre équipe, des compétences du quotidien et à la stratégie de direction.</p>
-          <p class="tease muted up">IA 101 · Labo IA · Décider avec l’IA</p>
+          <p class="tease muted up">Ateliers · Événements</p>
           <a class="up link arrow more" href="#/workshops">En savoir plus</a>
         </div>
       </div>
@@ -288,13 +288,13 @@
   <section id="cases">
     <div class="wrap">
       <div class="row">
-        <span class="up">03 · Études de cas</span>
+        <span class="up">03 · Réalisations</span>
         <p class="lead">Construits et en fonction. Une sélection d’agents et de systèmes d’IA que nous avons conçus et déployés.</p>
       </div>
       <div class="modules full">
-        <div><figure class="case-art"><img src="../images/case-prototype.jpg" alt="Une équipe examine des résultats sur un ordinateur portable et des rapports imprimés autour d’une table de réunion" width="1000" height="650"></figure><span class="up muted">Étude de cas · Développement de produit</span><h3>Un prototype pour lever des fonds.</h3><p>Un produit minimum viable avec une démo fonctionnelle, construit de A à Z pour soutenir une équipe fondatrice pendant son tour de financement.</p></div>
-        <div><figure class="case-art"><img src="../images/case-research.jpg" alt="Un développeur travaille sur du code devant plusieurs écrans" width="1000" height="650"></figure><span class="up muted">Étude de cas · Systèmes autonomes</span><h3>Un moteur de R-D qui ne dort jamais.</h3><p>Un moteur de recherche et développement autonome qui analyse la littérature scientifique, l’évolution des communautés et l’activité des concurrents pour repérer des occasions de croissance de niche pour l’entreprise.</p></div>
-        <div><figure class="case-art"><img src="../images/case-assets.jpg" alt="Deux collègues planifient une campagne sur un tableau de conférence couvert de papillons adhésifs" width="1000" height="650"></figure><span class="up muted">Étude de cas · Production générative</span><h3>La production de contenu à grande échelle.</h3><p>Une chaîne de génération qui produit des visuels et des textes sur demande, avec des étapes de révision qui gardent le résultat cohérent et fidèle à la marque.</p></div>
+        <div><figure class="case-art"><img src="../images/case-prototype.jpg" alt="Une équipe examine des résultats sur un ordinateur portable et des rapports imprimés autour d’une table de réunion" width="1000" height="650"></figure><span class="up muted">Développement de produit</span><h3>Un prototype pour lever des fonds.</h3><p>Un produit minimum viable avec une démo fonctionnelle, construit de A à Z pour soutenir une équipe fondatrice pendant son tour de financement.</p></div>
+        <div><figure class="case-art"><img src="../images/case-research.jpg" alt="Un développeur travaille sur du code devant plusieurs écrans" width="1000" height="650"></figure><span class="up muted">Systèmes autonomes</span><h3>Un moteur de R-D qui ne dort jamais.</h3><p>Un moteur de recherche et développement autonome qui analyse la littérature scientifique, l’évolution des communautés et l’activité des concurrents pour repérer des occasions de croissance de niche pour l’entreprise.</p></div>
+        <div><figure class="case-art"><img src="../images/case-assets.jpg" alt="Deux collègues planifient une campagne sur un tableau de conférence couvert de papillons adhésifs" width="1000" height="650"></figure><span class="up muted">Production générative</span><h3>La production de contenu à grande échelle.</h3><p>Une chaîne de génération qui produit des visuels et des textes sur demande, avec des étapes de révision qui gardent le résultat cohérent et fidèle à la marque.</p></div>
       </div>
     </div>
   </section>
