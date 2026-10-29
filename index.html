@@ -2,8 +2,9 @@
 <html lang="en" data-page="top"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>blackbox · Company focused hands-on AI tool workshops</title>
-<meta name="description" content="Company focused, hands-on AI tool workshops. In person and interactive, built around understanding the tools and using them to their full potential.">
+<meta name="robots" content="noindex, nofollow">
+<title>blackbox · Business solutions through hands-on AI training</title>
+<meta name="description" content="AI integration and hands-on AI skills training for organizations and SMEs: strategic advisory from vision to roadmap, workforce upskilling workshops and events. In person, in English and French.">
 <link rel="alternate" hreflang="en" href="https://blkboxai.io/">
 <link rel="alternate" hreflang="fr" href="https://blkboxai.io/fr/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 2 29 9.5v13L16 30 3 22.5v-13z' fill='%23000'/%3E%3Cpath d='M16 2 29 9.5 16 17 3 9.5z' fill='%23555'/%3E%3C/svg%3E">
@@ -11,8 +12,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..600&amp;display=swap" rel="stylesheet">
 <style>
-  /* AXEL-style gallery system: white field, black labels, one 13px scale,
-     square edges, hairline rules, photography carries the weight. */
   :root {
     color-scheme: light;
     --white: #ffffff;
@@ -21,46 +20,50 @@
     --rule: #e9e9e9;
     --studio: #f3f3f3;
     --inactive: #aaaaaa;
-    --green: #007b43; /* tokiwa, evergreen: the one living colour, a signal, never a field */
+    --green: #007b43;
     --f: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    /* one spacing scale (4px base) and one section rhythm, used everywhere */
     --s2: 8px; --s3: 12px; --s4: 16px; --s5: 20px; --s6: 24px; --s7: 32px; --s8: 40px;
     --side: 20px; --sec: 56px;
   }
   * { box-sizing: border-box; }
-  /* jump links land clear of the pinned header (57px, two rows = 85px on phones) */
   html { scroll-behavior: smooth; scroll-padding-top: 80px; }
   @media (max-width: 760px) { html { scroll-padding-top: 104px; } }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-  body { margin: 0; background: var(--white); color: var(--near); font-family: var(--f); font-size: 13px; line-height: 1.5; font-weight: 470; }
+  body { margin: 0; background: var(--white); color: var(--near); font-family: var(--f); font-size: 13px; line-height: 1.5; font-weight: 420; }
+  body { min-height: 100vh; display: flex; flex-direction: column; }
+  footer { margin-top: auto; }
   img { display: block; max-width: 100%; height: auto; }
   a { color: inherit; text-decoration: none; }
   h1, h2, h3, h4, p { margin: 0; font-weight: inherit; font-size: inherit; }
   @media (min-width: 761px) { :root { --side: 40px; --sec: 80px; } }
   .wrap { padding-inline: var(--side); }
-  .up { text-transform: uppercase; font-weight: 520; }
+  .up { text-transform: uppercase; font-weight: 480; letter-spacing: .02em; }
   .muted { color: var(--inactive); }
   .rule { border-top: 1px solid var(--rule); }
-  .arrow::after { content: "\00a0→"; } /* non-breaking: the arrow never wraps alone */
+  .arrow::after { content: "\00a0→"; }
   .link:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--green); }
   ::selection { background: color-mix(in srgb, var(--green) 20%, transparent); }
   section { padding-block: var(--sec); }
-  /* every section opens the same way: hairline, label row, then one 40px step to the content */
   .row { display: grid; grid-template-columns: 1fr 2fr; gap: var(--s5); border-top: 1px solid var(--rule); padding-top: var(--s4); margin-bottom: var(--s8); }
   @media (max-width: 760px) { .row { grid-template-columns: 1fr; gap: var(--s2); } }
 
-  /* strip + header */
   .strip { background: var(--studio); text-align: center; padding: 8px 16px; font-size: 12px; }
+  .strip .hl { font: inherit; letter-spacing: inherit; text-transform: inherit; color: var(--near); background: color-mix(in srgb, var(--green) 14%, transparent); border: 0; padding: 2px 6px; cursor: pointer; }
+  .strip .hl:hover { background: color-mix(in srgb, var(--green) 24%, transparent); }
+  .strip .hl:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
   header { position: sticky; top: 0; z-index: 10; background: var(--white); border-bottom: 1px solid var(--rule); }
   .head { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 56px; }
-  .head nav { display: flex; gap: 16px; }
+  .head nav { display: flex; flex-wrap: wrap; gap: 6px 16px; }
   .head nav a { color: var(--near); }
   .head nav a:hover { color: var(--inactive); }
+  .dd { position: relative; }
+  .dd .sub { display: none; position: absolute; top: 100%; left: -17px; z-index: 20; padding-top: 18px; }
+  .dd .sub div { display: grid; gap: 10px; min-width: 210px; padding: var(--s4); background: var(--white); border: 1px solid var(--rule); text-transform: none; letter-spacing: 0; font-weight: 420; }
+  @media (hover: hover) and (min-width: 761px) { .dd:hover .sub, .dd:focus-within .sub { display: block; } }
   .wordmark { display: inline-flex; align-items: center; gap: 8px; font-size: 19px; font-weight: 600; letter-spacing: -0.04em; color: var(--ink); }
   .wordmark svg { width: 18px; height: 18px; }
   .wordmark b { font-weight: 400; }
   .head .right { justify-self: end; }
-  /* language switch: EN · FR in the same order on both pages; the current one is dark, the other is the link */
   .head .lang { display: inline-flex; gap: 10px; }
   .head .lang a { color: #767676; }
   .head .lang a:hover { color: var(--near); }
@@ -70,18 +73,17 @@
     .head nav.left { grid-row: 2; grid-column: 1 / -1; }
   }
 
-  /* hero: headline, then a triptych of tall photographs */
   .hero-text { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s5); padding-block: var(--sec) var(--s8); }
-  .hero-text h1 { font-size: clamp(22px, 1.4rem + 1.4vw, 36px); line-height: 1.12; letter-spacing: -0.02em; font-weight: 470; max-width: 20ch; color: var(--ink); }
+  .hero-text h1 { font-size: clamp(22px, 1.4rem + 1.4vw, 36px); line-height: 1.12; letter-spacing: -0.015em; font-weight: 420; max-width: 20ch; color: var(--ink); }
   .hero-text p { align-self: end; max-width: 46ch; font-size: 14px; }
   @media (max-width: 760px) { .hero-text { grid-template-columns: 1fr; } }
+  .hero-text .up + h1 { margin-top: var(--s3); }
   .trip { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s5); }
   @media (max-width: 760px) { .trip { grid-template-columns: 1fr 1fr; } .trip figure:last-child { display: none; } }
   .trip figure { margin: 0; }
   .trip img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; background: var(--studio); }
   .trip figcaption { display: flex; justify-content: space-between; gap: var(--s2); padding-top: var(--s3); }
 
-  /* editorial two-column rows */
   .body { grid-column: 2; }
   @media (max-width: 760px) { .body { grid-column: 1; } }
   .lead { font-size: clamp(15px, .9rem + .35vw, 19px); line-height: 1.45; color: var(--ink); max-width: 52ch; }
@@ -90,14 +92,16 @@
   .points div { border-top: 1px solid var(--rule); padding-top: var(--s3); }
   .points p { margin-top: var(--s2); max-width: 40ch; }
 
-  /* workshops */
+  .tease { margin-top: var(--s4); }
+  .btn { display: inline-block; margin-top: var(--s6); }
+
   .ws { display: grid; grid-template-columns: 1fr 2fr; gap: var(--s5); }
   .ws + .ws { border-top: 1px solid var(--rule); margin-top: var(--sec); padding-top: var(--sec); }
   @media (max-width: 760px) { .ws { grid-template-columns: 1fr; } }
   .ws > figure { margin: 0; }
   .ws > figure img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--studio); }
   .ws > figure figcaption { padding-top: var(--s3); }
-  .ws h2 { font-size: clamp(20px, 1.1rem + 1vw, 28px); letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); margin-top: var(--s2); }
+  .ws h2 { font-size: clamp(20px, 1.1rem + 1vw, 28px); letter-spacing: -0.015em; line-height: 1.15; color: var(--ink); margin-top: var(--s2); }
   .ws .intro { margin-top: var(--s4); max-width: 64ch; font-size: 14px; line-height: 1.6; }
   .facts { margin: var(--s6) 0 0; max-width: 64ch; }
   .facts div { display: grid; grid-template-columns: 110px 1fr; gap: var(--s3); padding-block: var(--s2); border-top: 1px solid var(--rule); }
@@ -106,17 +110,57 @@
   .facts dd { margin: 0; }
   .modules { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s5); margin-top: var(--s8); }
   @media (max-width: 760px) { .modules { grid-template-columns: 1fr; } }
-  .modules h3 { color: var(--ink); margin-top: var(--s2); font-weight: 520; }
+  .modules h3 { color: var(--ink); margin-top: var(--s2); font-weight: 480; }
   .modules p { margin-top: var(--s2); line-height: 1.6; }
+  .case-art { margin: 0 0 var(--s4); aspect-ratio: 40 / 26; overflow: hidden; background: var(--studio); }
+  .case-art img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .modules.full { margin-top: 0; }
+  .hero { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: clamp(380px, 58vh, 620px); background: #2b2620; color: var(--white); overflow: hidden; }
+  .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.56)); }
+  .hero .wrap { position: relative; z-index: 1; }
+  .hero .hero-text h1 { color: inherit; }
+  #top > section { padding-block: var(--sec) 0; }
+  #top > section:last-child { padding-bottom: var(--sec); }
+  #top > section .row { margin-bottom: 0; }
+  .more { display: inline-block; margin-top: var(--s4); }
+  .hero button { position: absolute; z-index: 1; right: var(--side); bottom: 12px; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 50%; background: rgb(255 255 255 / .2); cursor: pointer; opacity: .8; transition: opacity .2s; }
+  .hero button:hover, .hero button:focus-visible { opacity: 1; }
+  .hero button:focus-visible { outline: 2px solid var(--white); outline-offset: 2px; }
+  .hero button::before { content: ""; position: absolute; inset: 9px 10px; border-inline: 3px solid #fff; }
+  .hero button[aria-pressed="true"]::before { inset: 8px 8px 8px 11px; border: 0; background: #fff; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+  .foot { position: relative; }
+  .roll { position: absolute; left: 0; right: 0; top: calc(-.8 * 28px - 1px); height: 28px; pointer-events: none; }
+  .roll canvas { display: block; width: 100%; height: 100%; }
+  html:not([data-page="about-page"]) .roll { display: none; }
+  .cal-wrap { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: var(--s8); align-items: start; }
+  @media (max-width: 760px) { .cal-wrap { grid-template-columns: 1fr; } }
+  .cal-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: var(--s3); border-bottom: 1px solid var(--rule); }
+  .cal-head button { font: inherit; font-size: 15px; line-height: 1; color: var(--near); background: none; border: 0; padding: 2px 4px; cursor: pointer; }
+  .cal-head button:hover { color: var(--inactive); }
+  .cal-head button:focus-visible, .cal-grid a:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .cal-month { text-transform: uppercase; font-weight: 480; letter-spacing: .02em; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; margin-top: var(--s3); text-align: center; font-variant-numeric: tabular-nums; }
+  .cal-grid .dow { color: var(--inactive); padding-bottom: 6px; }
+  .cal-grid .day { display: grid; place-items: center; aspect-ratio: 1; }
+  .cal-grid .out { color: #d0d0d0; }
+  .cal-grid .today { outline: 1px solid var(--ink); outline-offset: -1px; }
+  .cal-grid .ev { background: var(--ink); color: var(--white); }
+  .cal-grid a.ev:hover { opacity: .85; }
+  .agenda { list-style: none; margin: 0; padding: 0; }
+  .agenda li { border-top: 1px solid var(--rule); padding-block: var(--s3); }
+  .agenda li:last-child { border-bottom: 1px solid var(--rule); }
+  .agenda h3 { color: var(--ink); font-weight: 480; margin-top: var(--s2); }
+  .agenda p { margin-top: var(--s2); }
+  .agenda .past { opacity: .45; }
+  .agenda-empty { border-top: 1px solid var(--rule); padding-top: var(--s3); color: var(--inactive); max-width: 40ch; }
   .goal { margin-top: var(--s8); max-width: 64ch; color: var(--ink); }
 
-  /* community: the client's words in the content column, at the lead size */
   .quote { margin-bottom: 0; }
   .quote blockquote { margin: 0; max-width: 64ch; font-size: 14px; line-height: 1.65; color: var(--ink); }
   .quote cite { display: block; margin-top: var(--s4); font-style: normal; }
 
-  /* about: its own small page, one narrow column */
-  #about-page section { padding-top: var(--s8); }
+  main:not(#top) section { padding-top: var(--s8); }
   .about { display: grid; grid-template-columns: 200px minmax(0, 60ch); gap: var(--s8); }
   @media (max-width: 760px) { .about { grid-template-columns: 1fr; } .about figure { max-width: 200px; } }
   .about figure { margin: 0; }
@@ -126,22 +170,16 @@
   .about h3 { margin-top: var(--s6); }
   [hidden] { display: none !important; }
 
-  /* footer: the last section, built exactly like the others */
-  /* the footer is one compact, even band: the same space above and below, and two identical rows (hairline, 16px, content) */
   footer { background: var(--studio); border-top: 1px solid var(--rule); padding-block: var(--s7); }
   .foot { margin-bottom: 0; }
-  /* base line of the footer: copyright under the label column, the logo at the far right, same grid as every section */
   .foot-base { display: grid; grid-template-columns: 1fr 2fr; gap: var(--s5); align-items: center; margin-top: var(--s4); border-top: 1px solid var(--rule); padding-top: var(--s4); }
   .foot-base .wordmark { font-size: 14px; justify-self: end; }
   .foot-base .wordmark svg { width: 15px; height: 15px; }
   .foot-base small { font-size: 12px; color: var(--inactive); }
   @media (max-width: 760px) { .foot-base { grid-template-columns: 1fr; gap: var(--s2); } }
 
-  /* "Book a workshop" buttons look like the links around them */
-  .head .right button { font-family: inherit; font-size: inherit; font-weight: inherit; text-transform: inherit; color: var(--near); background: none; border: 0; padding: 0; cursor: pointer; }
 
-  /* the message box: a small square panel that opens above the pill, bottom right, and leaves the page alone */
-  #msgbox { position: fixed; inset: auto 20px 72px auto; margin: 0; width: min(320px, calc(100vw - 40px)); padding: var(--s4); background: var(--white); color: var(--near); border: 1px solid var(--rule); box-shadow: 0 8px 30px rgba(0,0,0,.10); }
+  #msgbox, #notify { position: fixed; inset: auto 20px 72px auto; margin: 0; width: min(320px, calc(100vw - 40px)); padding: var(--s4); background: var(--white); color: var(--near); border: 1px solid var(--rule); box-shadow: 0 8px 30px rgba(0,0,0,.10); }
   .msg-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--s3); }
   .msg-head button { font: inherit; font-size: 18px; line-height: 1; color: var(--inactive); background: none; border: 0; padding: 0 2px; cursor: pointer; }
   .msg-head button:hover { color: var(--ink); }
@@ -149,46 +187,136 @@
   .msg label { display: grid; gap: 4px; }
   .msg input, .msg textarea { font: inherit; color: var(--ink); background: var(--white); border: 1px solid var(--rule); border-radius: 0; padding: 8px 10px; resize: vertical; }
   .msg input:focus-visible, .msg textarea:focus-visible { outline: none; border-color: var(--ink); }
-  .msg [type=submit] { justify-self: start; font: inherit; font-weight: 520; text-transform: uppercase; background: var(--ink); color: var(--white); border: 0; padding: 10px 14px; cursor: pointer; }
-  .msg [type=submit]:hover { opacity: .85; }
+  .msg [type=submit], .btn { justify-self: start; font: inherit; font-weight: 480; text-transform: uppercase; background: var(--ink); color: var(--white); border: 0; padding: 10px 14px; cursor: pointer; }
+  .msg [type=submit]:hover, .btn:hover { opacity: .85; }
   .msg [type=submit]:disabled { opacity: .4; cursor: default; }
-  .msg [type=submit]:focus-visible, .msg-head button:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .msg [type=submit]:focus-visible, .btn:focus-visible, .msg-head button:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
   .msg .status:empty { display: none; }
+  .msg .note { color: var(--inactive); font-size: 12px; }
 
-
-  /* page editor (only on localhost): dashed outline on editable text, one small bar at bottom left */
-  .az-editing [contenteditable] { outline: 1px dashed var(--line-strong); outline-offset: 4px; cursor: text; }
-  .az-editing [contenteditable]:focus { outline: 1px solid var(--ink); }
-  .az-pill, .az-bar { position: fixed; left: 20px; bottom: 20px; z-index: 60; background: var(--ink); color: var(--white); }
-  .az-pill { font: inherit; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; border: 0; padding: 10px 14px; cursor: pointer; }
-  .az-bar { display: flex; align-items: center; gap: 8px; padding: 8px 10px; }
-  .az-bar button { font: inherit; font-size: 12px; text-transform: uppercase; background: transparent; color: var(--white); border: 1px solid var(--white); padding: 6px 10px; cursor: pointer; }
-  .az-bar .az-status { max-width: 40ch; font-size: 12px; opacity: .8; }
 </style>
 </head>
 <body class="">
 
-<div class="strip up">In-person AI tool workshops for companies · Get in touch to book a workshop for your team</div>
+<div class="strip up">Hands-on AI training and integration for organizations · <button class="hl" type="button" popovertarget="msgbox">Get in touch to book a workshop for your team</button></div>
 
 <header>
   <div class="wrap head">
     <nav class="left up" aria-label="primary">
-      <a href="#workshops">Workshops</a>
-      <a href="#/about">About</a>
+      <div class="dd"><a href="#/ai-integration">AI Integration</a><div class="sub"><div><a href="#strategy">Strategic advisory</a><a href="#deployment">Integration</a><a href="#cases">Case studies</a><a href="#referral">Client referral</a></div></div></div>
+      <div class="dd"><a href="#/workshops">Workshops</a><div class="sub"><div><a href="#toolkit">AI 101</a><a href="#generative">AI Labs</a><a href="#decisions">AI Decisions Framework</a></div></div></div>
     </nav>
     <a class="wordmark" href="#/" aria-label="blackbox home">
       <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 56 17.5 32 31 8 17.5Z" fill="#6b6b6b"></path><path d="M8 17.5 32 31v29L8 46.5Z" fill="#1c1c1c"></path><path d="M56 17.5 32 31v29l24-13.5Z" fill="#000"></path></svg>
       <span>black<b>box</b></span>
     </a>
-    <nav class="right up" aria-label="contact"><button class="link arrow" type="button" popovertarget="msgbox">Book a workshop</button><span class="lang"><span aria-current="true">EN</span><a href="fr/" lang="fr" hreflang="fr">FR</a></span></nav>
+    <nav class="right up" aria-label="secondary"><a href="#/events">Events</a><a href="#/about">About</a><span class="lang"><span aria-current="true">EN</span><a href="fr/" lang="fr" hreflang="fr">FR</a></span></nav>
   </div>
 </header>
 
 <main id="top">
 
+  <div class="hero">
+    <video muted="" loop="" playsinline="" poster="images/flock.jpg" aria-hidden="true"><source src="images/flock.mp4" type="video/mp4"></video>
+    <div class="wrap">
+      <div class="hero-text">
+        <h1>Business solutions through hands-on AI training.</h1>
+        <p>AI integration and workforce skills workshops for organizations ready to adopt AI, without leaving their people behind.</p>
+      </div>
+    </div>
+    <button type="button" aria-pressed="false" aria-label="Pause the background video"></button>
+  </div>
+
+  <section id="integration">
+    <div class="wrap">
+      <div class="row">
+        <span class="up">AI Integration</span>
+        <div class="body">
+          <p class="lead">From vision to roadmap to deployment. We help organizations adopt AI where it moves productivity, and integrate it securely into the way they already work.</p>
+          <p class="tease muted up">Strategic advisory · Integration · Case studies</p>
+          <a class="up link arrow more" href="#/ai-integration">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="workshops">
+    <div class="wrap">
+      <div class="row">
+        <span class="up">Workshops</span>
+        <div class="body">
+          <p class="lead">Hands-on AI training that upskills your workforce. Built around a team's real work, from everyday skills to prototypes and leadership strategy.</p>
+          <p class="tease muted up">AI 101 · AI Labs · AI decisions framework</p>
+          <a class="up link arrow more" href="#/workshops">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<main id="integration-page" hidden="">
   <div class="wrap">
     <div class="hero-text">
-      <h1>Company focused hands-on AI tool workshops.</h1>
+      <div><span class="up">AI INTEGRATION</span><h1>From strategy to deployment.</h1></div>
+      <p>AI adoption is a complex process that involves significant considerations. We take organizations from strategy to roadmap, then enable deployment the solutions the roadmap calls for.</p>
+    </div>
+  </div>
+
+  <section id="strategy">
+    <div class="wrap">
+      <div class="row">
+        <span class="up">01 · Strategic advisory</span>
+        <div class="body">
+          <p class="lead">We make the roadmap to full integration of agentic capabilities and automated workflows possible, making AI concrete wherever you are in your adoption cycle . We enable change at the enterprise level through our operational assessments, and help align decision-making with the impactful AI considerations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="deployment">
+    <div class="wrap">
+      <div class="row">
+        <span class="up">02 · Integration</span>
+        <div class="body">
+          <p class="lead">Actionable deployment of AI solutions. We design, build and integrate AI agents and automated workflows into your operations, on infrastructure you control, then train the team that runs them. Responsible AI is built in, not bolted on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cases">
+    <div class="wrap">
+      <div class="row">
+        <span class="up">03 · Case studies</span>
+        <p class="lead">Built and running. A selection of the AI agents and systems we have designed and deployed.</p>
+      </div>
+      <div class="modules full">
+        <div><figure class="case-art"><img src="images/case-prototype.jpg" alt="A team reviewing results on a laptop and printed reports around a meeting table" width="1000" height="650"></figure><span class="up muted">Case study · Product build</span><h3>A prototype for funding.</h3><p>A minimum viable product with a working demo, built from scratch to support a founding team during its fundraising round.</p></div>
+        <div><figure class="case-art"><img src="images/case-research.jpg" alt="A developer working on code across several monitors" width="1000" height="650"></figure><span class="up muted">Case study · Autonomous systems</span><h3>An R&amp;D engine that never sleeps.</h3><p>An autonomous research and development engine that scans scientific literature, community developments and competitor activity to identify niche growth opportunities for the business.</p></div>
+        <div><figure class="case-art"><img src="images/case-assets.jpg" alt="Two colleagues planning a campaign on a flip chart covered in sticky notes" width="1000" height="650"></figure><span class="up muted">Case study · Generative production</span><h3>Asset generation at scale.</h3><p>A generation pipeline that produces visual and written assets on demand, with review steps that keep the output consistent and on brand.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="referral">
+    <div class="wrap">
+      <div class="row quote">
+        <span class="up">Client referral</span>
+        <div class="body">
+          <blockquote>“Working with blackbox has been an absolute game changer for our company. They bring a unique ability to quickly identify inefficiencies and provide clear, actionable solutions that have allowed us to scale our operations significantly. The insights and clarity provided have filled gaps we didn’t even know existed, enabling growth at a level we hadn’t previously been able to reach. Their sharp understanding of complex systems, combined with a problem-solving mindset, makes them an invaluable asset. On top of that, the team is fantastic to work with; professional, collaborative, and genuinely committed to helping teams succeed. I highly recommend working with blackbox if you're looking to elevate your business through strategic AI implementation and operational efficiency.”</blockquote>
+          <cite class="up muted">One Pro Sports Management</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<main id="workshops-page" hidden="">
+  <div class="wrap">
+    <div class="hero-text">
+      <h1>Company focused hands-on workshops.</h1>
       <p>In person and interactive. We teach professionals and teams to leverage AI tools to their full potential.</p>
     </div>
     <div class="trip">
@@ -208,7 +336,7 @@
     </div>
   </div>
 
-  <section id="approach">
+  <section>
     <div class="wrap">
       <div class="row">
         <span class="up">The approach</span>
@@ -224,7 +352,7 @@
     </div>
   </section>
 
-  <section id="workshops">
+  <section>
     <div class="wrap">
       <div class="row"><span class="up">Workshops</span><p class="muted up">Three workshops · In person · No technical experience needed</p></div>
 
@@ -236,7 +364,7 @@
         <div>
           <span class="up">Workshop 01</span>
           <h2>AI 101</h2>
-          <p class="intro">The AI workshop every professional needs. We cover the essential techniques and discover tools that will transform your workflows. Participants learn to make the most out of AI for their given roles and responsibilities</p>
+          <p class="intro">The AI workshop every company needs. We cover the essential techniques and discover tools that will transform your workflows. Participants and teams learn to make the most out of AI for their given roles and responsibilities.</p>
           <dl class="facts">
             <div><dt class="up">For</dt><dd>Professionals using AI tools in their daily work.</dd></div>
             <div><dt class="up">Format</dt><dd>Hands-on, built around participants' own tasks.</dd></div>
@@ -298,20 +426,103 @@
       </article>
     </div>
   </section>
+</main>
 
+<main id="literacy-page" hidden="">
   <section>
     <div class="wrap">
-      <div class="row quote">
-        <span class="up">From the community</span>
+      <div class="row">
+        <span class="up">AI Literacy</span>
         <div class="body">
-          <blockquote>“Working with blackbox has been an absolute game changer for our company. They bring a unique ability to quickly identify inefficiencies and provide clear, actionable solutions that have allowed us to scale our operations significantly. The insights and clarity provided have filled gaps we didn’t even know existed, enabling growth at a level we hadn’t previously been able to reach. Their sharp understanding of complex systems, combined with a problem-solving mindset, makes them an invaluable asset. On top of that, the team is fantastic to work with; professional, collaborative, and genuinely committed to helping teams succeed. I highly recommend working with blackbox if you're looking to elevate your business through strategic AI implementation and operational efficiency.”</blockquote>
-          <cite class="up muted">One Pro Sports Management</cite>
+          <p class="lead">Understanding what AI is, how it works and how to use it well. Our workshops and courses build knowledge through hands-on practice, equipping participants with the skills for the future of work.</p>
+          <div class="points">
+            <div><a class="up link arrow" href="#ai4all">AI4All</a><p>The best general introduction to AI, for everyone.</p></div>
+            <div><a class="up link arrow" href="#agents">Intro to AI agents</a><p>What AI agents are, how they work and where they fit.</p></div>
+            <div><a class="up link arrow" href="#/events">Events</a><p>Panels, discussions and awareness sessions open to all.</p></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
+  <section id="ai4all">
+    <div class="wrap">
+      <div class="row"><span class="up">AI4All</span><p class="muted up">General knowledge · Hands-on course · No technical experience needed</p></div>
+      <article class="ws">
+        <figure>
+          <img src="images/adults-group.jpg" alt="Three people on orange chairs working through an exercise beside a flip chart" width="1400" height="933">
+          <figcaption class="up muted">AI4All</figcaption>
+        </figure>
+        <div>
+          <span class="up">General introduction</span>
+          <h2>The best general introduction to AI.</h2>
+          <p class="intro">A clear, hands-on introduction for anyone, whatever their role or background. Participants learn what AI is and how it works, try the main tools on everyday tasks, and leave knowing how to use them safely and with confidence.</p>
+          <dl class="facts">
+            <div><dt class="up">For</dt><dd>Anyone, in any role. No technical experience needed.</dd></div>
+            <div><dt class="up">Format</dt><dd>In person and hands-on, in plain language.</dd></div>
+            <div><dt class="up">Outcome</dt><dd>A solid understanding of AI and the confidence to use it every day.</dd></div>
+          </dl>
+          <div class="modules">
+            <div><span class="up muted">01 · Foundations</span><h3>What AI actually is.</h3><p>How today's AI tools work, in plain language: the models, the data behind them, and why they can sound sure and still be wrong.</p></div>
+            <div><span class="up muted">02 · Everyday use</span><h3>Put it to work.</h3><p>Hands-on practice with the main tools for writing, research and everyday tasks, and how to ask for what you need.</p></div>
+            <div><span class="up muted">03 · Good judgment</span><h3>Use it well.</h3><p>Privacy, bias and accuracy: what to check, what never to share, and when not to use AI at all.</p></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
 
+  <section id="agents">
+    <div class="wrap">
+      <div class="row"><span class="up">Intro to AI agents</span><p class="muted up">Hands-on course · In person · No technical experience needed</p></div>
+      <article class="ws">
+        <figure>
+          <img src="images/ai-agents.svg" alt="Drawing of a human profile whose head is made of circuitry" width="1200" height="900">
+          <figcaption class="up muted">Intro to AI agents</figcaption>
+        </figure>
+        <div>
+          <span class="up">Introduction</span>
+          <h2>From answers to actions.</h2>
+          <p class="intro">AI is moving from answering questions to carrying out tasks. This course explains what AI agents are, how they work and where they fit in your work, with live demonstrations and guided practice.</p>
+          <dl class="facts">
+            <div><dt class="up">For</dt><dd>Professionals and teams who want to know what agents can take on.</dd></div>
+            <div><dt class="up">Format</dt><dd>Live demonstrations and guided, hands-on practice.</dd></div>
+            <div><dt class="up">Outcome</dt><dd>A clear view of what agents can and cannot do, and a first use case from your own work.</dd></div>
+          </dl>
+          <div class="modules">
+            <div><span class="up muted">01 · Foundations</span><h3>From chatbot to agent.</h3><p>What makes an agent different: tools, memory, planning, and acting on your behalf.</p></div>
+            <div><span class="up muted">02 · In practice</span><h3>Watch one work.</h3><p>Live demonstrations of agents on real tasks, then guided practice with today's agent tools.</p></div>
+            <div><span class="up muted">03 · Control</span><h3>Keep a human in the loop.</h3><p>Where agents fail, what data they can reach, and the permissions and checks that keep them safe.</p></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<main id="events-page" hidden="">
+  <section id="calendar">
+    <div class="wrap">
+      <div class="row">
+        <span class="up">Calendar</span>
+        <div class="body">
+          <div class="cal-wrap">
+            <div class="cal">
+              <div class="cal-head"><button type="button" data-step="-1" aria-label="Previous month">←</button><span class="cal-month" aria-live="polite"></span><button type="button" data-step="1" aria-label="Next month">→</button></div>
+              <div class="cal-grid"></div>
+            </div>
+            <div>
+              <ol class="agenda">
+              </ol>
+              <p class="agenda-empty">No events on the calendar yet. New dates are announced here.</p>
+              <button class="btn arrow" type="button" popovertarget="notify">Get notified</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <main id="about-page" hidden="">
@@ -324,9 +535,9 @@
           <p>My philosophy with AI is that implementation without understanding creates uncertainty, and unreliable systems. What makes AI useful is primarily the clarity of your thinking. I work in that manner, helping teams understand what's going on, how the tools work, and what they do. Efficiency and speed are a byproduct of that process.</p>
           <h3 class="up">Background</h3>
           <p>I hold a B.S. in Information from the University of Michigan (2019), where I combined Data Sciences and Python on one side, with human-computer interaction and usability on the other. The through-line: technology and people must always be considered equally in a system.</p>
-          <p>At seriesOne, a FINRA-registered digital-securities platform, I was Senior Analyst, where I performed due diligence on prospective issuers, drafted technical documents, and worked directly with C-suite teams on product development.</p>
+          <p>At seriesOne, a FINRA-registered digital-securities platform, I was Senior Analyst, where I performed due diligence on prospective issuers, drafted technical documents, and worked with management and product teams.</p>
           <p>Since then I have built and deployed agent-based systems that streamline operations for teams and make processes more efficient.</p>
-          <p>Before consulting I was a professional footballer in Canada's first division. I also played in the NCAA Division 1 for one of the most prestigious schools in the United States. My experience at the highest level of athletics taught me how to tackle big problems with a clear mind, under pressure, as part of a team.</p>
+          <p>Before consulting I competed as a professional athlete -&nbsp; My experience taught me how to tackle big problems with a clear mind, as part of a team.</p>
         </div>
       </div>
     </div>
@@ -336,6 +547,7 @@
 <footer id="contact">
   <div class="wrap">
     <div class="row foot">
+      <div class="roll"><canvas aria-hidden="true"></canvas></div>
       <span class="up">Contact</span>
       <p>Get in touch:&nbsp;&nbsp;<a class="link" href="mailto:info@blkboxai.io">info@blkboxai.io</a></p>
     </div>
@@ -347,17 +559,29 @@
 </footer>
 
 
-<!-- ponytail: FormSubmit relays the message by email (GitHub Pages has no backend); swap the action for your own endpoint if volume or privacy needs grow -->
 <div id="msgbox" popover="" role="dialog" aria-labelledby="msgbox-title">
   <div class="msg-head"><span class="up" id="msgbox-title">Book a workshop</span><button type="button" popovertarget="msgbox" popovertargetaction="hide" aria-label="Close">×</button></div>
   <form class="msg" action="https://formsubmit.co/info@blkboxai.io" method="POST">
     <input type="hidden" name="_subject" value="Workshop inquiry · blackbox">
     <input type="hidden" name="_template" value="table">
-    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" data-ddg-inputtype="unknown">
-    <label><span class="up">Name</span><input name="name" required="" maxlength="100" autocomplete="name" data-ddg-inputtype="identities.fullName" data-ddg-autofill="true"></label>
-    <label><span class="up">Email</span><input name="email" type="email" required="" maxlength="200" autocomplete="email" data-ddg-inputtype="identities.emailAddress" data-ddg-autofill="true"></label>
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+    <label><span class="up">Name</span><input name="name" required="" maxlength="100" autocomplete="name"></label>
+    <label><span class="up">Email</span><input name="email" type="email" required="" maxlength="200" autocomplete="email"></label>
     <label><span class="up">Message</span><textarea name="message" rows="4" required="" maxlength="4000" placeholder="Tell us about your workshop objectives."></textarea></label>
     <button type="submit" class="arrow">Send</button>
+    <p class="status" role="status" aria-live="polite"></p>
+  </form>
+</div>
+<div id="notify" popover="" role="dialog" aria-labelledby="notify-title">
+  <div class="msg-head"><span class="up" id="notify-title">Get notified</span><button type="button" popovertarget="notify" popovertargetaction="hide" aria-label="Close">×</button></div>
+  <form class="msg" action="https://formsubmit.co/info@blkboxai.io" method="POST">
+    <input type="hidden" name="_subject" value="Event notifications · blackbox">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="message" value="Please let me know about upcoming blackbox events.">
+    <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+    <label><span class="up">Email</span><input name="email" type="email" required="" maxlength="200" autocomplete="email"></label>
+    <p class="note">We only use your email to tell you about blackbox events.</p>
+    <button type="submit" class="arrow">Notify me</button>
     <p class="status" role="status" aria-live="polite"></p>
   </form>
 </div>
@@ -366,130 +590,185 @@
   (function () {
     var S = { sending: "Sending…", thanks: "Thank you. Your message has been sent." };
 
-    var pages = { "#/about": "about-page" };
+    var pages = { "#/ai-integration": "integration-page", "#/workshops": "workshops-page", "#/ai-literacy": "literacy-page", "#/events": "events-page", "#/about": "about-page" };
     var mains = document.querySelectorAll("main");
     function route() {
-      if (location.hash === "#contact") return;              // footer is on every page
-      var page = pages[location.hash] || "top";
+      if (location.hash === "#contact") return;
+      var a = document.activeElement;
+      if (a && a.closest(".dd")) a.blur();
+      var target = location.hash.length > 2 && document.getElementById(location.hash.slice(1));
+      var home = target && target.closest("main");
+      var page = pages[location.hash] || (home ? home.id : "top");
       document.documentElement.setAttribute("data-page", page);
       mains.forEach(function (m) { m.hidden = m.id !== page; });
-      var target = page === "top" && location.hash.length > 2 && document.getElementById(location.hash.slice(1));
       if (target) target.scrollIntoView(); else window.scrollTo(0, 0);
     }
+    var cal = document.querySelector(".cal");
+    if (cal) (function () {
+      var items = [].slice.call(document.querySelectorAll(".agenda li[data-date]"));
+      var iso = function (d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); };
+      var today = iso(new Date()), lang = document.documentElement.lang, events = {};
+      items.forEach(function (li) {
+        li.id = "ev-" + li.dataset.date;
+        li.classList.toggle("past", li.dataset.date < today);
+        events[li.dataset.date] = li.querySelector("h3") ? li.querySelector("h3").textContent : "";
+      });
+      var upcoming = Object.keys(events).filter(function (d) { return d >= today; }).sort();
+      document.querySelector(".agenda-empty").hidden = upcoming.length > 0;
+      var start = upcoming[0] || today, month = new Date(+start.slice(0, 4), +start.slice(5, 7) - 1, 1);
+      var title = cal.querySelector(".cal-month"), grid = cal.querySelector(".cal-grid");
+      function cell(tag, cls, text) { var el = document.createElement(tag); el.className = cls; el.textContent = text; grid.appendChild(el); return el; }
+      function draw() {
+        title.textContent = month.toLocaleDateString(lang, { month: "long", year: "numeric" });
+        grid.textContent = "";
+        for (var w = 0; w < 7; w++) cell("span", "dow", new Date(2026, 1, 1 + w).toLocaleDateString(lang, { weekday: "narrow" }));
+        var d = new Date(month); d.setDate(1 - month.getDay());
+        var weeks = Math.ceil((month.getDay() + new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate()) / 7);
+        for (var n = 0; n < weeks * 7; n++, d.setDate(d.getDate() + 1)) {
+          var k = iso(d), out = d.getMonth() !== month.getMonth(), mark = (k === today ? " today" : "");
+          if (k in events && !out) { var a = cell("a", "day ev" + mark, d.getDate()); a.href = "#ev-" + k; a.setAttribute("aria-label", events[k] + ", " + d.toLocaleDateString(lang, { dateStyle: "long" })); }
+          else cell("span", "day" + (out ? " out" : "") + mark, d.getDate());
+        }
+      }
+      cal.addEventListener("click", function (e) { var b = e.target.closest("[data-step]"); if (b) { month.setMonth(month.getMonth() + +b.dataset.step); draw(); } });
+      draw();
+    })();
+
+    var hero = document.querySelector(".hero");
+    if (hero) (function () {
+      var video = hero.querySelector("video"), button = hero.querySelector("button");
+      function set(paused) {
+        button.setAttribute("aria-pressed", paused);
+        if (paused) video.pause(); else video.play().catch(function () { button.setAttribute("aria-pressed", true); });
+      }
+      button.addEventListener("click", function () { set(button.getAttribute("aria-pressed") !== "true"); });
+      set(matchMedia("(prefers-reduced-motion: reduce)").matches);
+    })();
+
+    [].forEach.call(document.querySelectorAll(".roll"), function (roll) {
+      var canvas = roll.querySelector("canvas"), ctx = canvas.getContext("2d");
+      var RATE = 5.6, SHUTTER = 1 / 120, WEIGHT = .22;
+      var sub = function (a, b) { return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]; }, dot = function (a, b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; };
+      var unit = function (a) { var l = Math.sqrt(dot(a, a)); return [a[0] / l, a[1] / l, a[2] / l]; };
+      var CAM = [0, 64, 190], AHEAD = unit(sub([0, .5, 0], CAM)), RIGHT = unit([-AHEAD[2], 0, AHEAD[0]]);
+      var UP = [RIGHT[1] * AHEAD[2] - RIGHT[2] * AHEAD[1], RIGHT[2] * AHEAD[0] - RIGHT[0] * AHEAD[2], RIGHT[0] * AHEAD[1] - RIGHT[1] * AHEAD[0]];
+      var LIGHT = unit([-.3, 1, .15]);
+      var FACES = [[[0, 0, 1], [[0, 0, .5], [1, 0, .5], [1, 1, .5], [0, 1, .5]]], [[0, 0, -1], [[0, 0, -.5], [1, 0, -.5], [1, 1, -.5], [0, 1, -.5]]],
+        [[0, 1, 0], [[0, 1, .5], [1, 1, .5], [1, 1, -.5], [0, 1, -.5]]], [[0, -1, 0], [[0, 0, .5], [1, 0, .5], [1, 0, -.5], [0, 0, -.5]]],
+        [[1, 0, 0], [[1, 0, .5], [1, 0, -.5], [1, 1, -.5], [1, 1, .5]]], [[-1, 0, 0], [[0, 0, .5], [0, 0, -.5], [0, 1, -.5], [0, 1, .5]]]];
+      var still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var w = 0, h, focal, floorY, start, quarters, run = false, t0 = 0, drawn = "";
+      function project(p) {
+        var d = sub(p, CAM), z = dot(d, AHEAD);
+        return [w / 2 + focal * dot(d, RIGHT) / z, floorY - focal * dot(d, UP) / z];
+      }
+      function reach(x) {
+        var xs = [];
+        [0, 1].forEach(function (px) { [0, 1].forEach(function (py) { [-.5, .5].forEach(function (z) { xs.push(project([px + x, py, z])[0]); }); }); });
+        return [Math.min.apply(null, xs), Math.max.apply(null, xs)];
+      }
+      function size() {
+        var dpr = devicePixelRatio || 1;
+        w = roll.clientWidth; h = roll.clientHeight; drawn = "";
+        canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        focal = h * .44 * dot(sub([0, .5, 0], CAM), AHEAD); floorY = 0;
+        floorY = h * .8 - project([0, 0, .5])[1];
+        start = 0; while (reach(start)[0] > 0) start--;
+        while (reach(start)[0] < 0) start++;
+        quarters = 0; while (focal > 0 && reach(start + quarters + 1)[1] <= w) quarters++;
+      }
+      function pose(t) {
+        if (still || t >= quarters / RATE) return { x: start + quarters, a: 0 };
+        if (t < 0) return { x: start, a: 0 };
+        var q = t * RATE, k = Math.floor(q), f = q - k;
+        return { x: start + k, a: (f + WEIGHT * Math.sin(2 * Math.PI * f) / (2 * Math.PI)) * Math.PI / 2 };
+      }
+      function shadow(cx, rx, ry, a) {
+        ctx.save(); ctx.translate(cx[0], cx[1]); ctx.scale(1, ry / rx);
+        var g = ctx.createRadialGradient(0, 0, 0, 0, 0, rx);
+        g.addColorStop(0, "rgba(0,0,0," + a.toFixed(3) + ")"); g.addColorStop(.55, "rgba(0,0,0," + (a * .45).toFixed(3) + ")"); g.addColorStop(1, "rgba(0,0,0,0)");
+        ctx.fillStyle = g; ctx.fillRect(-rx, -rx, 2 * rx, 2 * rx); ctx.restore();
+      }
+      function paint(b) {
+        var c = Math.cos(b.a), sn = Math.sin(b.a);
+        function at(p) { var x = p[0] - 1; return [x * c + p[1] * sn + 1 + b.x, p[1] * c - x * sn, p[2]]; }
+        function turn(n) { return [n[0] * c + n[1] * sn, n[1] * c - n[0] * sn, n[2]]; }
+        var m = at([.5, .5, 0]), lift = Math.max(0, m[1] - .5), spread = .75 + .25 * lift;
+        var o = project([m[0], 0, 0]), ex = project([m[0] + spread, 0, 0]), ez = project([m[0], 0, .62]);
+        var rx = Math.max(1, ex[0] - o[0]), ry = Math.max(1, ez[1] - o[1]);
+        shadow(o, rx * 1.6, ry * 1.6, .07);
+        shadow(o, rx * .85, ry * .85, .16 * Math.max(.3, 1 - 2.2 * lift));
+        FACES.forEach(function (f) {
+          var n = turn(f[0]);
+          if (dot(n, sub(CAM, at(f[1][0]))) <= 0) return;
+          var v = 8 + 112 * Math.max(0, dot(n, LIGHT));
+          var pts = f[1].map(function (q) { return project(at(q)); }), hi = pts[0], lo = pts[0];
+          pts.forEach(function (p) { if (p[1] < hi[1]) hi = p; if (p[1] > lo[1]) lo = p; });
+          var g = ctx.createLinearGradient(hi[0], hi[1], lo[0], lo[1]);
+          g.addColorStop(0, "rgb(" + Array(4).join(Math.round(Math.min(255, v * 1.12 + 6)) + ",").slice(0, -1) + ")");
+          g.addColorStop(1, "rgb(" + Array(4).join(Math.round(v * .82) + ",").slice(0, -1) + ")");
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          pts.forEach(function (p, j) { ctx[j ? "lineTo" : "moveTo"](p[0], p[1]); });
+          ctx.fill();
+          if (n[1] > .5) {
+            var front = pts.slice().sort(function (p, q) { return q[1] - p[1]; }).slice(0, 3).sort(function (p, q) { return p[0] - q[0]; });
+            ctx.strokeStyle = "rgba(255,255,255,.16)"; ctx.lineWidth = 1.2; ctx.lineJoin = "round";
+            ctx.beginPath(); ctx.moveTo(front[0][0], front[0][1]); ctx.lineTo(front[1][0], front[1][1]); ctx.lineTo(front[2][0], front[2][1]); ctx.stroke();
+          }
+        });
+      }
+      function frame(t) {
+        var b = pose(t), key = b.a || t < quarters / RATE ? "" : "rest";
+        if (key && key === drawn) return;
+        drawn = key;
+        ctx.clearRect(0, 0, w, h);
+        var n = still ? 1 : 6;
+        ctx.globalCompositeOperation = "lighter";
+        ctx.globalAlpha = 1 / n;
+        for (var i = 0; i < n; i++) { var m = i ? pose(t - i * SHUTTER / n) : b; if (m) paint(m); }
+        ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 1;
+      }
+      function tick(now) { frame((now - t0) / 1000); if (run) requestAnimationFrame(tick); }
+      new IntersectionObserver(function (e) {
+        var was = run;
+        if (e[0].isIntersecting && !was) { size(); if (!t0) t0 = performance.now(); frame((performance.now() - t0) / 1000); }
+        run = e[0].isIntersecting && !still;
+        if (run && !was) requestAnimationFrame(tick);
+      }).observe(roll);
+      addEventListener("resize", function () { if (w && roll.clientHeight) { size(); frame((performance.now() - t0) / 1000); } });
+    });
+
     window.addEventListener("hashchange", route);
     route();
 
-    // "Book a workshop" opens the message box, ready to type
-    var box = document.getElementById("msgbox"), form = box.querySelector(".msg");
-    var status = form.querySelector(".status"), send = form.querySelector("[type=submit]");
-    box.addEventListener("toggle", function (e) { if (e.newState === "open") form.elements.name.focus(); });
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      send.disabled = true;
-      status.textContent = S.sending;
-      fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(Object.fromEntries(new FormData(form))),
-        signal: AbortSignal.timeout(10000)   // a blocked or down relay fails in 10s, not minutes
-      }).then(function (r) { return r.json(); }).then(function (d) {
-        if (String(d.success) !== "true") throw new Error(d.message);
-        form.reset();
-        status.textContent = S.thanks;
-      }).catch(function () {   // relay blocked, down or not activated: hand the message, already written, to their email app
-        var f = form.elements, a = document.createElement("a");
-        a.className = "link";
-        a.href = "mailto:info@blkboxai.io?subject=" + encodeURIComponent(f._subject.value) +
-          "&body=" + encodeURIComponent(f.message.value + "\n\n" + f.name.value + "\n" + f.email.value);
-        a.textContent = "Send it from your email app";
-        status.replaceChildren("Couldn't send from the site. ", a, ", your message is already filled in.");
-      }).finally(function () { send.disabled = false; });
+    [].forEach.call(document.querySelectorAll("[popover] form.msg"), function (form) {
+      var box = form.closest("[popover]"), status = form.querySelector(".status"), send = form.querySelector("[type=submit]");
+      box.addEventListener("toggle", function (e) { if (e.newState === "open") form.querySelector("input[name=name], input[name=email]").focus(); });
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        send.disabled = true;
+        status.textContent = S.sending;
+        fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(Object.fromEntries(new FormData(form))),
+          signal: AbortSignal.timeout(10000)
+        }).then(function (r) { return r.json(); }).then(function (d) {
+          if (String(d.success) !== "true") throw new Error(d.message);
+          form.reset();
+          status.textContent = S.thanks;
+        }).catch(function () {
+          var f = form.elements, a = document.createElement("a");
+          a.className = "link";
+          a.href = "mailto:info@blkboxai.io?subject=" + encodeURIComponent(f._subject.value) +
+            "&body=" + encodeURIComponent(f.message.value + "\n\n" + (f.name ? f.name.value + "\n" : "") + f.email.value);
+          a.textContent = "Send it from your email app";
+          status.replaceChildren("Couldn't send from the site. ", a, ", your message is already filled in.");
+        }).finally(function () { send.disabled = false; });
+      });
     });
   })();
-</script>
-<script id="az-edit">
-(function () {
-  "use strict";
-  /* Local only: "Edit page" makes the text editable and Save writes index.html through serve.mjs.
-     Only serve.mjs stamps the az-version meta, so the editor shows only where saving works; the public site never runs it.
-     Opened as a file, hop over to the server if it's running. */
-  var SERVER = "http://localhost:5051/";
-  if (location.protocol === "file:") {
-    fetch(SERVER, { mode: "no-cors", cache: "no-store" }).then(function () { location.replace(SERVER + location.hash); }, function () {});
-    return;
-  }
-  if (!document.querySelector('meta[name="az-version"]')) return;
-
-  var TARGETS = "h1,h2,h3,p,dt,dd,blockquote,cite,figcaption,nav a,.strip,.wordmark span,small,span.up,span.muted";
-  var editing = false, els = [], pill, bar, status;
-
-  function say(msg) { status.textContent = msg; }
-  function on() {
-    editing = true;
-    document.body.classList.add("az-editing");
-    els = Array.prototype.filter.call(document.querySelectorAll(TARGETS), function (el) {
-      return !el.closest("form,#msgbox,.az-edit-ui");
-    });
-    els.forEach(function (el) { el.setAttribute("contenteditable", "true"); el.setAttribute("spellcheck", "true"); });
-    pill.hidden = true; bar.hidden = false;
-    say("Click any text to edit. Save writes index.html.");
-  }
-  function off() {
-    editing = false;
-    els.forEach(function (el) { el.removeAttribute("contenteditable"); el.removeAttribute("spellcheck"); });
-    document.body.classList.remove("az-editing");
-    pill.hidden = false; bar.hidden = true;
-  }
-  function save() {
-    var clone = document.documentElement.cloneNode(true);
-    clone.querySelectorAll("[contenteditable],[spellcheck]").forEach(function (el) {
-      el.removeAttribute("contenteditable"); el.removeAttribute("spellcheck");
-    });
-    clone.querySelectorAll(".az-edit-ui").forEach(function (el) { el.remove(); });
-    clone.querySelector("body").classList.remove("az-editing"); // clone is an <html> element, not a document: it has no .body
-    var meta = clone.querySelector('meta[name="az-version"]');
-    var version = meta ? meta.content : "";
-    if (meta) meta.remove();
-    say("Saving…");
-    fetch(location.pathname, { method: "PUT", body: "<!doctype html>\n" + clone.outerHTML, headers: { "X-Az-Version": version } })
-      .then(function (r) {
-        if (r.status === 409) { say("index.html changed since this page opened. Reload and edit again."); return; }
-        if (!r.ok) throw new Error(r.status);
-        location.reload();
-      })
-      .catch(function () { say("Couldn't save. Is serve.mjs still running?"); });
-  }
-
-  pill = document.createElement("button");
-  pill.type = "button"; pill.className = "az-edit-ui az-pill"; pill.textContent = "Edit page";
-  bar = document.createElement("div");
-  bar.className = "az-edit-ui az-bar"; bar.hidden = true;
-  bar.innerHTML = '<span class="az-status"></span><button type="button" data-act="save">Save</button><button type="button" data-act="close">Close</button>';
-  status = bar.querySelector(".az-status");
-  document.body.append(pill, bar);
-
-  pill.addEventListener("click", on);
-  bar.addEventListener("click", function (e) {
-    var act = e.target.getAttribute("data-act");
-    if (act === "save") save();
-    if (act === "close") off();
-  });
-  document.addEventListener("click", function (e) {   // while editing, a click on a link edits its text instead
-    if (editing && e.target.closest("a[href]") && !e.target.closest(".az-edit-ui")) e.preventDefault();
-  }, true);
-  document.addEventListener("paste", function (e) {   // plain text only, on one line
-    if (!editing || !e.target.closest || !e.target.closest("[contenteditable]")) return;
-    e.preventDefault();
-    var text = (e.clipboardData || window.clipboardData).getData("text/plain");
-    document.execCommand("insertText", false, text.replace(/\s*[\r\n]+\s*/g, " "));
-  }, true);
-  document.addEventListener("keydown", function (e) {
-    if (!editing) return;
-    if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") { e.preventDefault(); save(); return; }
-    // Enter finishes the edit instead of slipping a <div> or <br> into a heading
-    if (e.key === "Enter" && e.target.closest && e.target.closest("[contenteditable]")) { e.preventDefault(); e.target.blur(); }
-  });
-})();
 </script>
 
 
